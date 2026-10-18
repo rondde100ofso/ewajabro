@@ -12,7 +12,7 @@ export function FeatureSections() {
   return (
     <section
       id="features"
-      className="relative py-28 sm:py-36 bg-[#08090B] border-t border-white/5"
+      className="relative py-28 sm:py-36 bg-[#08090B] border-t border-white/5 overflow-hidden"
       aria-label="Core Gameplay Features"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -21,7 +21,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* Main Content Sections */}
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">
         {/* Section B: Hero */}
         <HeroSection />
 

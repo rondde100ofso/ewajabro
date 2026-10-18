@@ -21,7 +21,7 @@ export function GameplayGallery() {
   return (
     <section
       id="gallery"
-      className="relative py-28 sm:py-36 bg-[#08090B] border-t border-white/5"
+      className="relative py-28 sm:py-36 bg-[#08090B] border-t border-white/5 overflow-hidden"
       aria-label="Gameplay and Media Gallery"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

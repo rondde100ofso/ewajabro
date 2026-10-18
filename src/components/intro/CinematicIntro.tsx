@@ -86,7 +86,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       role="dialog"
       aria-label="Cinematic Introduction"
       aria-modal="true"
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#08090B] transition-opacity duration-700 ease-out select-none ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#08090B] overflow-hidden transition-opacity duration-700 ease-out select-none ${
         stage === 'completing' ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >

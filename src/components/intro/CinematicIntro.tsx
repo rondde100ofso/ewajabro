@@ -94,10 +94,10 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       <button
         onClick={completeIntro}
         type="button"
-        className="absolute top-6 right-6 md:top-8 md:right-10 z-20 px-4 py-2 text-xs font-mono tracking-widest text-[#A4A7AC] hover:text-[#F5F5F3] hover:border-[#E62935] border border-white/10 rounded transition-colors uppercase bg-black/40 backdrop-blur-sm"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-10 z-20 px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-mono tracking-widest text-[#A4A7AC] hover:text-[#F5F5F3] hover:border-[#E62935] border border-white/10 rounded transition-colors uppercase bg-black/40 backdrop-blur-sm"
         aria-label="Skip cinematic introduction"
       >
-        Skip Intro [ESC]
+        Skip Intro <span className="hidden sm:inline">[ESC]</span>
       </button>
 
       {/* Center Cinematic Stage */}

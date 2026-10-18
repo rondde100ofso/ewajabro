@@ -108,14 +108,6 @@ export function Navbar() {
 
             {/* Mobile Hamburger Button */}
             <div className="flex items-center gap-3 lg:hidden">
-              <Button
-                href="#download"
-                variant="primary"
-                size="sm"
-                className="text-xs px-3 py-1.5"
-              >
-                Download
-              </Button>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}

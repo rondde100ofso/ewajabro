@@ -101,16 +101,16 @@ export function HeroSection() {
             type="button"
             onClick={toggleSound}
             aria-label={isMuted ? 'Unmute hero background video' : 'Mute hero background video'}
-            className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 z-20 flex items-center gap-2 px-3 py-1.5 text-xs font-mono uppercase tracking-widest text-[#A4A7AC] hover:text-[#F5F5F3] bg-black/60 hover:bg-[#E62935]/20 border border-white/10 hover:border-[#E62935] rounded-none backdrop-blur-sm transition-all"
+            className="absolute bottom-4 right-4 sm:bottom-10 sm:right-10 z-20 flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#A4A7AC] hover:text-[#F5F5F3] bg-black/70 hover:bg-[#E62935]/20 border border-white/10 hover:border-[#E62935] rounded-none backdrop-blur-sm transition-all"
           >
             {isMuted ? (
               <>
-                <VolumeX className="w-4 h-4 text-[#A4A7AC]" />
+                <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A4A7AC]" />
                 <span className="hidden sm:inline">Audio Off</span>
               </>
             ) : (
               <>
-                <Volume2 className="w-4 h-4 text-[#FF4552] animate-pulse" />
+                <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FF4552] animate-pulse" />
                 <span className="text-[#FF4552] hidden sm:inline">Audio On</span>
               </>
             )}
@@ -118,15 +118,15 @@ export function HeroSection() {
         )}
 
         {/* Hero Foreground Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 sm:pt-40 sm:pb-32 flex flex-col items-center text-center">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-40 sm:pb-32 flex flex-col items-center text-center">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 text-xs sm:text-sm font-mono tracking-widest text-[#FF4552] uppercase bg-[#E62935]/10 border border-[#E62935]/30 rounded-none shadow-[0_0_15px_rgba(230,41,53,0.2)]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 sm:mb-6 text-[11px] sm:text-sm font-mono tracking-widest text-[#FF4552] uppercase bg-[#E62935]/10 border border-[#E62935]/30 rounded-none shadow-[0_0_15px_rgba(230,41,53,0.2)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#E62935] animate-ping" />
             <span>{siteConfig.tagline}</span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="font-display font-extrabold uppercase text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-[0.88] text-[#F5F5F3] drop-shadow-2xl max-w-5xl">
+          <h1 className="font-display font-extrabold uppercase text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-[0.9] sm:leading-[0.88] text-[#F5F5F3] drop-shadow-2xl max-w-5xl">
             RIVALS
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F5F5F3] via-[#FFFFFF] to-[#A4A7AC]">
@@ -136,46 +136,48 @@ export function HeroSection() {
           </h1>
 
           {/* Supporting Text */}
-          <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-[#A4A7AC] max-w-2xl font-normal leading-relaxed text-balance">
+          <p className="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl text-[#A4A7AC] max-w-2xl font-normal leading-relaxed text-balance px-2 sm:px-0">
             Build your garage. Tune your ride. Challenge your rivals. Make every race count.
           </p>
 
           {/* Action CTAs */}
-          <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-5 w-full sm:w-auto">
+          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center gap-3 sm:gap-5 w-full sm:w-auto">
             <Button
               href="#download"
               variant="primary"
               size="lg"
-              className="w-full sm:w-auto text-base tracking-widest py-4 px-8"
-              icon={<Download className="w-5 h-5" />}
+              className="w-full sm:w-auto text-sm sm:text-base tracking-widest py-3.5 sm:py-4 px-6 sm:px-8 justify-center shadow-[0_0_25px_rgba(230,41,53,0.3)]"
+              icon={<Download className="w-4 h-4 sm:w-5 sm:h-5" />}
             >
               Download The Game
             </Button>
 
-            {siteConfig.assets.heroVideo && (
-              <Button
-                onClick={() => setTrailerModalOpen(true)}
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto text-base tracking-widest py-4 px-8 border-[#E62935]/50 hover:bg-[#E62935]/15"
-                icon={<Play className="w-4 h-4 fill-current text-[#FF4552]" />}
-              >
-                Watch Trailer
-              </Button>
-            )}
+            <div className="grid grid-cols-2 gap-2.5 w-full sm:flex sm:w-auto">
+              {siteConfig.assets.heroVideo && (
+                <Button
+                  onClick={() => setTrailerModalOpen(true)}
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto text-xs sm:text-base tracking-wider sm:tracking-widest py-3 sm:py-4 px-3 sm:px-8 border-[#E62935]/50 hover:bg-[#E62935]/15 justify-center"
+                  icon={<Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current text-[#FF4552]" />}
+                >
+                  Watch Trailer
+                </Button>
+              )}
 
-            <Button
-              href="#the-game"
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto text-base tracking-widest py-4 px-8"
-            >
-              Discover The Game
-            </Button>
+              <Button
+                href="#the-game"
+                variant="secondary"
+                size="lg"
+                className="w-full sm:w-auto text-xs sm:text-base tracking-wider sm:tracking-widest py-3 sm:py-4 px-3 sm:px-8 justify-center"
+              >
+                Discover The Game
+              </Button>
+            </div>
           </div>
 
           {/* Target Platform Metadata Pill */}
-          <div className="mt-8 flex flex-wrap justify-center items-center gap-3 sm:gap-4 text-xs font-mono tracking-widest uppercase">
+          <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-[10px] sm:text-xs font-mono tracking-wider sm:tracking-widest uppercase text-center px-2">
             <span className="text-[#FF4552] font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E62935] animate-ping" />
               Closed Invite-Only Alpha Active
@@ -187,11 +189,11 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Scroll Down Indicator */}
+        {/* Scroll Down Indicator - Hidden on mobile touchscreens */}
         <a
           href="#the-game"
           aria-label="Scroll down to game introduction"
-          className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-[#A4A7AC]/60 hover:text-[#E62935] transition-colors group cursor-pointer"
+          className="hidden sm:flex absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2 text-[#A4A7AC]/60 hover:text-[#E62935] transition-colors group cursor-pointer"
         >
           <span className="text-[10px] font-mono uppercase tracking-widest group-hover:text-[#F5F5F3] transition-colors">
             SCROLL

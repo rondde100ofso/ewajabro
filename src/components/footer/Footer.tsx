@@ -140,8 +140,14 @@ export function Footer() {
       {/* Bottom Bar: Copyright & Legal Policies */}
       <div className="border-t border-white/5 bg-[#08090B]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono">
-          <div className="text-center md:text-left text-[#A4A7AC]/80">
-            &copy; {currentYear} {siteConfig.brandName}. All rights reserved. {siteConfig.legal.publisherLegalName}.
+          <div className="text-center md:text-left text-[#A4A7AC]/80 space-y-1">
+            <div>
+              &copy; {currentYear} {siteConfig.brandName}. All rights reserved. {siteConfig.legal.publisherLegalName}.
+            </div>
+            <div className="text-[11px] text-[#6B7078]">
+              Official website designed &amp; built by{' '}
+              <span className="text-[#A4A7AC] font-medium">Aslan Development</span>
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-5 text-[#A4A7AC]/80">

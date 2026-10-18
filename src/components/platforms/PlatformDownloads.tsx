@@ -37,17 +37,17 @@ export function PlatformDownloads() {
         {/* Store Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* iOS Card */}
-          <div className="relative bg-[#141619] border border-white/10 p-8 sm:p-10 flex flex-col justify-between group hover:border-[#E62935]/50 transition-all duration-300">
+          <div className="relative bg-[#141619] border border-white/10 p-6 sm:p-10 flex flex-col justify-between group hover:border-[#E62935]/50 transition-all duration-300">
             <div className="flex items-start justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-[#1D2024] border border-white/10 flex items-center justify-center text-white group-hover:text-[#E62935] transition-colors">
-                  <Apple className="w-8 h-8" />
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#1D2024] border border-white/10 flex items-center justify-center text-white group-hover:text-[#E62935] transition-colors flex-shrink-0">
+                  <Apple className="w-7 h-7 sm:w-8 sm:h-8" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-mono tracking-widest text-[#A4A7AC] uppercase block">
+                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#A4A7AC] uppercase block">
                     Download on the
                   </span>
-                  <h3 className="font-display font-bold text-2xl uppercase tracking-wider text-[#F5F5F3]">
+                  <h3 className="font-display font-bold text-xl sm:text-2xl uppercase tracking-wider text-[#F5F5F3]">
                     {ios.storeName}
                   </h3>
                 </div>
@@ -58,7 +58,7 @@ export function PlatformDownloads() {
               </Badge>
             </div>
 
-            <div className="my-8 space-y-2 border-t border-b border-white/5 py-4">
+            <div className="my-6 sm:my-8 space-y-2 border-t border-b border-white/5 py-4">
               <div className="flex justify-between text-xs font-mono">
                 <span className="text-[#A4A7AC]">Platform:</span>
                 <span className="text-[#F5F5F3]">iPhone & iPad (TestFlight)</span>
@@ -95,17 +95,17 @@ export function PlatformDownloads() {
           </div>
 
           {/* Android Card */}
-          <div className="relative bg-[#141619] border border-white/10 p-8 sm:p-10 flex flex-col justify-between group hover:border-[#E62935]/50 transition-all duration-300">
+          <div className="relative bg-[#141619] border border-white/10 p-6 sm:p-10 flex flex-col justify-between group hover:border-[#E62935]/50 transition-all duration-300">
             <div className="flex items-start justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-[#1D2024] border border-white/10 flex items-center justify-center text-white group-hover:text-[#E62935] transition-colors">
-                  <Play className="w-8 h-8 fill-current" />
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#1D2024] border border-white/10 flex items-center justify-center text-white group-hover:text-[#E62935] transition-colors flex-shrink-0">
+                  <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-current" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-mono tracking-widest text-[#A4A7AC] uppercase block">
+                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#A4A7AC] uppercase block">
                     Get it on
                   </span>
-                  <h3 className="font-display font-bold text-2xl uppercase tracking-wider text-[#F5F5F3]">
+                  <h3 className="font-display font-bold text-xl sm:text-2xl uppercase tracking-wider text-[#F5F5F3]">
                     {android.storeName}
                   </h3>
                 </div>
@@ -116,7 +116,7 @@ export function PlatformDownloads() {
               </Badge>
             </div>
 
-            <div className="my-8 space-y-2 border-t border-b border-white/5 py-4">
+            <div className="my-6 sm:my-8 space-y-2 border-t border-b border-white/5 py-4">
               <div className="flex justify-between text-xs font-mono">
                 <span className="text-[#A4A7AC]">Platform:</span>
                 <span className="text-[#F5F5F3]">Android (Internal Test Track)</span>

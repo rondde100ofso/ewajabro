@@ -173,7 +173,7 @@ export const siteConfig: SiteConfig = {
       title: 'AESTHETICS WITHOUT COMPROMISE',
       subtitle: 'Make your vehicle unmistakably yours before the lights drop.',
       description:
-        'Express your street identity with custom aero kits, wheel offsets, beadlock rims, parachute setups, and deep multi-stage pearlescent and satin finishes. Your rival will see your taillights—make sure they remember them.',
+        'Express your street identity with custom gem parts per car, wheel and rim sizing, special carbon fiber and glow rims, and multi stage pearlescent, satin, matte, and flake paint finishes. Your rival will see your taillights, make sure they remember you.',
       imageSrc: '/images/feature-customization.jpg',
       imageAlt: 'Customized drag car visual customization and aerodynamic styling',
       stats: [

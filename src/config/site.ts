@@ -185,9 +185,9 @@ export const siteConfig: SiteConfig = {
       id: 'drag-racing',
       tag: 'COMPETITIVE RACING',
       title: 'PURE REACTION DRAG RACING',
-      subtitle: 'No steering assists. Just raw timing, warm-up burnouts, and perfect launches.',
+      subtitle: 'No steering assist. Raw timing, skill based perfect launching, and grip loss.',
       description:
-        'Warm your tires in the staging box to hit optimal operating temperature. Watch the Christmas tree lights drop, drop the clutch at peak torque RPM, and execute lightning-fast manual paddle shifts without kissing the rev limiter.',
+        "Rev your engine to the limiter then drop at the right timing, or rev launch from 0 RPM's either choice, launch at the top of the window, and show off your skill with lightning fast and manual paddle shifting without slamming the limiter.",
       imageSrc: '/images/feature-racing.jpg',
       imageAlt: 'Two drag racing cars side by side at the Christmas tree staging line at night',
       stats: [

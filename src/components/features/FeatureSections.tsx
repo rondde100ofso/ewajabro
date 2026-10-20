@@ -22,11 +22,10 @@ export function FeatureSections() {
             ENGINEERING & COMPETITION
           </Badge>
           <h2 className="font-display font-black text-4xl sm:text-6xl uppercase tracking-tight text-[#F5F5F3]">
-            BUILT FROM THE ASPHALT UP
+            BUILT FROM THE TIRES UP
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#A4A7AC]">
-            Every system in Rivals Reborn is crafted to deliver visceral drag racing authenticity.
-            No gimmicks—just horsepower, traction, and human reaction.
+            Every aspect of Rivals Reborn is meant to test your skills, and deliver an authentic drag racing experience. Combined with real physics, grip, and launch values, to test your skills and build your garage from the ground up. No gimmicks, Just you, and your skills on the line for bragging rights.
           </p>
         </div>
 

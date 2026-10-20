@@ -142,10 +142,10 @@ export const siteConfig: SiteConfig = {
     {
       id: 'garage',
       tag: 'COLLECTION & CLASSICS',
-      title: 'BUILD YOUR ULTIMATE GARAGE',
-      subtitle: 'From grassroots project cars to elite track-bred monsters.',
+      title: 'TUNE, COMPETE, COLLECT',
+      subtitle: 'From grassroots project cars to elite tuned track-bred monsters.',
       description:
-        'Acquire, restore, and curate a distinguished collection of racing machines. Every vehicle in your stable carries distinct power-to-weight ratios, drivetrain dynamics, and upgrade paths designed for raw quarter-mile dominance.',
+        'Buy, upgrade, and win distinguished racing machines to become the best racer in RR. Every vehicle in your garage carries distinct power-to-weight ratios, drivetrain dynamics, and upgrade paths designed for raw quarter-mile dominance and pushing to your absolute limits.',
       imageSrc: '/images/feature-garage.jpg',
       imageAlt: 'High-performance tuning garage featuring customized drag vehicles',
       stats: [
@@ -157,9 +157,9 @@ export const siteConfig: SiteConfig = {
       id: 'tuning',
       tag: 'DYNO-PROVEN ENGINEERING',
       title: 'SURGICAL PERFORMANCE TUNING',
-      subtitle: 'Microsecond shifts and millisecond reaction times won on the dyno.',
+      subtitle: "Microsecond shifts, and millisecond reaction times won't help if you don't start on the dyno.",
       description:
-        'Dial in individual gear ratios, tire pressure, suspension stiffness, and forced-induction boost levels. An accurate physics engine rewards those who understand the balance between launch traction and top-end trap speed.',
+        'Dial in grip, power, suspension, NOS levels, and the correct pro tier per part, to find the best tune to beat your rivals. The physics engine is accurate to the thousandth RPM window, rewarding those who understand the balance between launch traction, power-to-weight ratio, and top-end trap speed.',
       imageSrc: '/images/feature-tuning.jpg',
       imageAlt: 'Precision engine bay dyno calibration and forced induction setup',
       stats: [

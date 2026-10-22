@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { siteConfig } from '@/config/site';
 
@@ -8,149 +8,461 @@ interface CinematicIntroProps {
   onComplete?: () => void;
 }
 
+type StagingStep =
+  | 'idle'
+  | 'pre_stage'
+  | 'staged'
+  | 'amber_1'
+  | 'amber_2'
+  | 'amber_3'
+  | 'green'
+  | 'launch'
+  | 'done';
+
 export function CinematicIntro({ onComplete }: CinematicIntroProps) {
-  const [stage, setStage] = useState<'initial' | 'visible' | 'sweep' | 'completing' | 'done'>('initial');
+  const [step, setStep] = useState<StagingStep>('idle');
   const [mounted, setMounted] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [rpm, setRpm] = useState(1100);
+  const rpmIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const completeIntro = useCallback(() => {
-    setStage('completing');
+    setStep('launch');
     try {
       sessionStorage.setItem('rivals_intro_played', 'true');
     } catch {
       // Storage unavailable or disabled
     }
     const timer = setTimeout(() => {
-      setStage('done');
+      setStep('done');
       if (onComplete) onComplete();
-    }, 600);
+    }, 450);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
   useEffect(() => {
     setMounted(true);
 
-    // Check if user already saw the intro this session
+    // Skip if user already experienced intro this session
     try {
       if (sessionStorage.getItem('rivals_intro_played') === 'true') {
-        setStage('done');
+        setStep('done');
         if (onComplete) onComplete();
         return;
       }
     } catch {
-      // Ignore sessionStorage exceptions
+      // Storage unavailable
     }
 
-    // Check reduced motion preference
+    // Skip if reduced motion is requested
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (mediaQuery.matches) {
-      setStage('done');
+      setStep('done');
       if (onComplete) onComplete();
       return;
     }
 
-    // Step 1: Reveal logo smoothly
-    const t1 = setTimeout(() => {
-      setStage('visible');
-    }, 150);
+    // --- Choreographed Drag Racing Christmas Tree Staging Timeline ---
+    const timers: NodeJS.Timeout[] = [];
 
-    // Step 2: Animate sweep & progress
-    const t2 = setTimeout(() => {
-      setStage('sweep');
-      const start = Date.now();
-      const duration = 1600; // Total sweep duration ~1.6s
-      const interval = setInterval(() => {
-        const elapsed = Date.now() - start;
-        const p = Math.min(100, Math.floor((elapsed / duration) * 100));
-        setProgress(p);
-        if (elapsed >= duration) {
-          clearInterval(interval);
-          completeIntro();
-        }
-      }, 30);
-    }, 600);
+    // Step 1: Pre-Stage white bulbs click on (300ms)
+    timers.push(
+      setTimeout(() => {
+        setStep('pre_stage');
+        setRpm(2800);
+      }, 300)
+    );
+
+    // Step 2: Stage white bulbs ignite, transbrake locks (650ms)
+    timers.push(
+      setTimeout(() => {
+        setStep('staged');
+        setRpm(5200);
+      }, 650)
+    );
+
+    // Step 3: Amber 1 drops (1000ms)
+    timers.push(
+      setTimeout(() => {
+        setStep('amber_1');
+        setRpm(7100);
+      }, 1000)
+    );
+
+    // Step 4: Amber 2 drops (1250ms)
+    timers.push(
+      setTimeout(() => {
+        setStep('amber_2');
+        setRpm(8250);
+      }, 1250)
+    );
+
+    // Step 5: Amber 3 drops, rev limiter bounces (1500ms)
+    timers.push(
+      setTimeout(() => {
+        setStep('amber_3');
+        setRpm(8850);
+        // Jitter RPM on 2-step limiter
+        rpmIntervalRef.current = setInterval(() => {
+          setRpm(8850 + Math.floor(Math.random() * 80 - 40));
+        }, 50);
+      }, 1500)
+    );
+
+    // Step 6: GREEN LIGHT BLAST! (1750ms)
+    timers.push(
+      setTimeout(() => {
+        if (rpmIntervalRef.current) clearInterval(rpmIntervalRef.current);
+        setStep('green');
+        setRpm(9100);
+      }, 1750)
+    );
+
+    // Step 7: Launch transition into page (2150ms)
+    timers.push(
+      setTimeout(() => {
+        completeIntro();
+      }, 2150)
+    );
 
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
+      timers.forEach(clearTimeout);
+      if (rpmIntervalRef.current) clearInterval(rpmIntervalRef.current);
     };
   }, [completeIntro, onComplete]);
 
-  // If not mounted yet (SSR) or finished, do not render overlay
-  if (!mounted || stage === 'done') {
+  if (!mounted || step === 'done') {
     return null;
   }
+
+  // Active bulb states
+  const preStageOn = step !== 'idle';
+  const stageOn =
+    step === 'staged' ||
+    step === 'amber_1' ||
+    step === 'amber_2' ||
+    step === 'amber_3' ||
+    step === 'green' ||
+    step === 'launch';
+  const amber1On = step === 'amber_1' || step === 'amber_2' || step === 'amber_3';
+  const amber2On = step === 'amber_2' || step === 'amber_3';
+  const amber3On = step === 'amber_3';
+  const greenOn = step === 'green' || step === 'launch';
+
+  // Staging text badge
+  const getStatusBadge = () => {
+    switch (step) {
+      case 'idle':
+        return { text: 'APPROACHING STAGING BOX', color: 'text-[#A4A7AC]', border: 'border-white/10' };
+      case 'pre_stage':
+        return { text: 'PRE-STAGE LIT // ALIGNING WHEELS', color: 'text-white', border: 'border-white/40' };
+      case 'staged':
+        return { text: 'FULLY STAGED // TRANSBRAKE LOCKED', color: 'text-[#00F0FF]', border: 'border-[#00F0FF]/50' };
+      case 'amber_1':
+      case 'amber_2':
+        return { text: 'COUNTDOWN // BOOST SPOOLING', color: 'text-[#FFB800]', border: 'border-[#FFB800]/50' };
+      case 'amber_3':
+        return { text: '2-STEP REV LIMITER PEGGED', color: 'text-[#E62935]', border: 'border-[#E62935]' };
+      case 'green':
+      case 'launch':
+        return { text: 'GREEN LIGHT // LAUNCH!', color: 'text-[#00FF66]', border: 'border-[#00FF66]' };
+    }
+  };
+
+  const status = getStatusBadge();
 
   return (
     <div
       role="dialog"
-      aria-label="Cinematic Introduction"
+      aria-label="Cinematic Christmas Tree Staging Introduction"
       aria-modal="true"
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#08090B] overflow-hidden transition-opacity duration-700 ease-out select-none ${
-        stage === 'completing' ? 'opacity-0 pointer-events-none' : 'opacity-100'
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#08090B] overflow-hidden transition-all duration-500 ease-out select-none ${
+        step === 'launch'
+          ? 'opacity-0 scale-105 pointer-events-none'
+          : step === 'green'
+          ? 'scale-[1.01]'
+          : 'opacity-100 scale-100'
       }`}
     >
-      {/* Skip Intro Control */}
+      {/* Radiant Green Flash on launch */}
+      <div
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-300 z-10 ${
+          greenOn
+            ? 'bg-radial-gradient from-[#00FF66]/30 via-[#00FF66]/10 to-transparent opacity-100'
+            : 'opacity-0'
+        }`}
+      />
+
+      {/* Speed lines & asphalt grid texture */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none" />
+
+      {/* Top Controls: Skip Button */}
       <button
         onClick={completeIntro}
         type="button"
-        className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-10 z-20 px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-mono tracking-widest text-[#A4A7AC] hover:text-[#F5F5F3] hover:border-[#E62935] border border-white/10 rounded transition-colors uppercase bg-black/40 backdrop-blur-sm"
-        aria-label="Skip cinematic introduction"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-10 z-30 px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-mono tracking-widest text-[#A4A7AC] hover:text-[#F5F5F3] hover:border-[#E62935] border border-white/10 rounded-none transition-all uppercase bg-black/60 backdrop-blur-md cursor-pointer"
+        aria-label="Skip drag racing staging intro"
       >
-        Skip Intro <span className="hidden sm:inline">[ESC]</span>
+        Skip [ESC]
       </button>
 
-      {/* Center Cinematic Stage */}
-      <div className="relative flex flex-col items-center justify-center px-6 max-w-lg w-full">
-        {/* Subtle Ambient Red Glow behind logo */}
+      {/* Main Staging Rig */}
+      <div className="relative z-20 flex flex-col items-center justify-center px-4 max-w-2xl w-full">
+        {/* Dynamic Glow Aura */}
         <div
-          className={`absolute w-72 h-72 rounded-full bg-[#E62935]/15 blur-3xl transition-opacity duration-1000 ${
-            stage === 'sweep' ? 'opacity-100 scale-110' : 'opacity-0 scale-90'
+          className={`absolute w-80 h-80 sm:w-96 sm:h-96 rounded-full blur-3xl transition-all duration-500 pointer-events-none ${
+            greenOn
+              ? 'bg-[#00FF66]/25 scale-125'
+              : amber1On
+              ? 'bg-[#FFB800]/20 scale-110'
+              : preStageOn
+              ? 'bg-white/10 scale-100'
+              : 'bg-transparent scale-90'
           }`}
         />
 
-        {/* Logo Container */}
+        {/* ======================================================== */}
+        {/* THE CHRISTMAS TREE TOWER (Authentic Drag Strip Staging)   */}
+        {/* ======================================================== */}
+        <div className="flex flex-col items-center mb-6 sm:mb-8">
+          {/* Top Post Cap */}
+          <div className="w-16 h-1.5 bg-[#22262B] border-t border-x border-white/15" />
+
+          {/* Tree Housing Box */}
+          <div className="bg-[#121417] border border-white/15 px-3 py-3 sm:px-4 sm:py-3.5 shadow-[0_10px_35px_rgba(0,0,0,0.8)] flex flex-col items-center gap-2 relative">
+            {/* 1. PRE-STAGE WHITE BULBS (Dual mini bulbs) */}
+            <div className="flex items-center gap-3">
+              <div
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border transition-all duration-100 ${
+                  preStageOn
+                    ? 'bg-white border-white shadow-[0_0_15px_#FFFFFF,0_0_25px_rgba(255,255,255,0.8)]'
+                    : 'bg-[#1E2227] border-white/10'
+                }`}
+              />
+              <span className="text-[8px] font-mono tracking-widest text-white/40 uppercase">PRE</span>
+              <div
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border transition-all duration-100 ${
+                  preStageOn
+                    ? 'bg-white border-white shadow-[0_0_15px_#FFFFFF,0_0_25px_rgba(255,255,255,0.8)]'
+                    : 'bg-[#1E2227] border-white/10'
+                }`}
+              />
+            </div>
+
+            {/* 2. STAGE WHITE BULBS (Dual mini bulbs) */}
+            <div className="flex items-center gap-3">
+              <div
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border transition-all duration-100 ${
+                  stageOn
+                    ? 'bg-white border-white shadow-[0_0_15px_#FFFFFF,0_0_25px_rgba(255,255,255,0.8)]'
+                    : 'bg-[#1E2227] border-white/10'
+                }`}
+              />
+              <span className="text-[8px] font-mono tracking-widest text-white/40 uppercase">STG</span>
+              <div
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border transition-all duration-100 ${
+                  stageOn
+                    ? 'bg-white border-white shadow-[0_0_15px_#FFFFFF,0_0_25px_rgba(255,255,255,0.8)]'
+                    : 'bg-[#1E2227] border-white/10'
+                }`}
+              />
+            </div>
+
+            {/* Tree Divider */}
+            <div className="w-full h-px bg-white/10 my-0.5" />
+
+            {/* 3. AMBER COUNTDOWN FLOODLIGHTS (Dual pair) */}
+            {/* Amber 1 */}
+            <div className="flex items-center gap-4">
+              <div
+                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
+                  amber1On && !greenOn
+                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
+                    : 'bg-[#2A2315] border-white/10'
+                }`}
+              >
+                {/* Hood visor highlight */}
+                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
+              </div>
+              <div
+                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
+                  amber1On && !greenOn
+                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
+                    : 'bg-[#2A2315] border-white/10'
+                }`}
+              >
+                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
+              </div>
+            </div>
+
+            {/* Amber 2 */}
+            <div className="flex items-center gap-4">
+              <div
+                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
+                  amber2On && !greenOn
+                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
+                    : 'bg-[#2A2315] border-white/10'
+                }`}
+              >
+                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
+              </div>
+              <div
+                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
+                  amber2On && !greenOn
+                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
+                    : 'bg-[#2A2315] border-white/10'
+                }`}
+              >
+                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
+              </div>
+            </div>
+
+            {/* Amber 3 */}
+            <div className="flex items-center gap-4">
+              <div
+                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
+                  amber3On && !greenOn
+                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.9)] scale-110'
+                    : 'bg-[#2A2315] border-white/10'
+                }`}
+              >
+                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
+              </div>
+              <div
+                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
+                  amber3On && !greenOn
+                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.9)] scale-110'
+                    : 'bg-[#2A2315] border-white/10'
+                }`}
+              >
+                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
+              </div>
+            </div>
+
+            {/* Tree Divider */}
+            <div className="w-full h-px bg-white/10 my-0.5" />
+
+            {/* 4. GREEN LAUNCH FLOODLIGHTS (Dual pair) */}
+            <div className="flex items-center gap-4">
+              <div
+                className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
+                  greenOn
+                    ? 'bg-[#00FF66] border-[#70FFA3] shadow-[0_0_35px_#00FF66,0_0_70px_rgba(0,255,102,1)] scale-115'
+                    : 'bg-[#122619] border-white/10'
+                }`}
+              >
+                <div className="absolute top-0 inset-x-0 h-1.5 bg-black/40 rounded-t-full" />
+              </div>
+              <div
+                className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
+                  greenOn
+                    ? 'bg-[#00FF66] border-[#70FFA3] shadow-[0_0_35px_#00FF66,0_0_70px_rgba(0,255,102,1)] scale-115'
+                    : 'bg-[#122619] border-white/10'
+                }`}
+              >
+                <div className="absolute top-0 inset-x-0 h-1.5 bg-black/40 rounded-t-full" />
+              </div>
+            </div>
+          </div>
+
+          {/* Tree Base Post */}
+          <div className="w-6 h-4 bg-[#1E2227] border-b border-x border-white/15" />
+        </div>
+
+        {/* ======================================================== */}
+        {/* CENTER LOGO BRANDING                                      */}
+        {/* ======================================================== */}
         <div
-          className={`relative transition-all duration-1000 ease-out transform ${
-            stage === 'initial'
-              ? 'opacity-0 scale-95 blur-sm'
-              : stage === 'visible' || stage === 'sweep'
-              ? 'opacity-100 scale-100 blur-0'
-              : 'opacity-0 scale-105'
+          className={`relative transition-all duration-500 ease-out transform ${
+            greenOn
+              ? 'scale-105 filter brightness-125'
+              : step === 'idle'
+              ? 'opacity-60 scale-95'
+              : 'opacity-100 scale-100'
           }`}
         >
-          <div className="relative w-64 sm:w-80 md:w-96 h-28 sm:h-36 md:h-44">
+          <div className="relative w-64 sm:w-80 md:w-96 h-20 sm:h-24 md:h-28">
             <Image
               src={siteConfig.assets.logo}
               alt={siteConfig.brandName}
               fill
               priority
-              className="object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
+              className="object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]"
             />
           </div>
         </div>
 
-        {/* Racing Red Sweep Line & Progress */}
-        <div className="relative w-48 sm:w-64 mt-6 overflow-hidden">
-          {/* Track */}
-          <div className="h-[2px] w-full bg-white/10 relative">
-            {/* Progress bar */}
+        {/* ======================================================== */}
+        {/* DIGITAL TACHOMETER & 2-STEP REV LIMITER TELEMETRY         */}
+        {/* ======================================================== */}
+        <div className="w-full max-w-sm mt-5 sm:mt-6 flex flex-col items-center">
+          {/* Shift Light Array (8-Segment Racing Cluster) */}
+          <div className="flex items-center gap-1.5 mb-2.5">
+            {[...Array(8)].map((_, i) => {
+              const active = rpm > 2000 + i * 880;
+              const isRed = i >= 6;
+              const isAmber = i >= 3 && i < 6;
+
+              return (
+                <div
+                  key={i}
+                  className={`w-4 sm:w-5 h-2 rounded-xs border transition-all duration-75 ${
+                    active
+                      ? isRed
+                        ? 'bg-[#E62935] border-[#FF4552] shadow-[0_0_10px_#E62935]'
+                        : isAmber
+                        ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_10px_#FFB800]'
+                        : 'bg-[#00FF66] border-[#70FFA3] shadow-[0_0_10px_#00FF66]'
+                      : 'bg-white/5 border-white/10'
+                  }`}
+                />
+              );
+            })}
+          </div>
+
+          {/* RPM Display Bar */}
+          <div className="w-full h-1.5 bg-white/10 relative overflow-hidden rounded-full mb-3">
             <div
-              className="h-full bg-gradient-to-r from-[#E62935]/40 via-[#E62935] to-[#FF4552] transition-all duration-75 ease-linear shadow-[0_0_12px_#E62935]"
-              style={{ width: `${progress}%` }}
-            />
-            {/* Laser sweep highlight */}
-            <div
-              className={`absolute top-0 bottom-0 w-16 bg-gradient-to-r from-transparent via-white to-transparent opacity-75 transform -skew-x-12 ${
-                stage === 'sweep' ? 'animate-sweep' : 'hidden'
+              className={`h-full transition-all duration-100 ease-out ${
+                greenOn
+                  ? 'bg-[#00FF66] shadow-[0_0_15px_#00FF66]'
+                  : amber1On
+                  ? 'bg-gradient-to-r from-[#FFB800] to-[#E62935] shadow-[0_0_15px_#E62935]'
+                  : 'bg-gradient-to-r from-white/40 to-white shadow-[0_0_10px_white]'
               }`}
+              style={{ width: `${Math.min(100, (rpm / 9200) * 100)}%` }}
             />
           </div>
 
-          {/* Minimalist status line */}
-          <div className="flex justify-between items-center mt-2.5 text-[10px] tracking-widest uppercase font-mono text-[#A4A7AC]/80">
-            <span>STAGING SYSTEM</span>
-            <span className="text-[#E62935]">{progress}%</span>
+          {/* Telemetry Numbers & Status */}
+          <div className="flex items-center justify-between w-full font-mono text-[11px] sm:text-xs">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[#A4A7AC]">RPM:</span>
+              <span
+                className={`font-bold tabular-nums transition-colors ${
+                  greenOn
+                    ? 'text-[#00FF66]'
+                    : amber3On
+                    ? 'text-[#E62935] animate-pulse'
+                    : amber1On
+                    ? 'text-[#FFB800]'
+                    : 'text-white'
+                }`}
+              >
+                {rpm.toLocaleString()}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1 text-[#A4A7AC]">
+              <span>GEAR:</span>
+              <span className="text-white font-bold">{greenOn ? '1ST [LAUNCH]' : 'N // TRANSBRAKE'}</span>
+            </div>
+          </div>
+
+          {/* Tactical Status Badge */}
+          <div
+            className={`mt-3 px-3 py-1 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest border transition-all duration-150 ${status.color} ${status.border} bg-black/60 backdrop-blur-sm shadow-lg`}
+          >
+            {status.text}
           </div>
         </div>
       </div>

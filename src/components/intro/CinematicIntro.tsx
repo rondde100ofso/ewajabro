@@ -10,7 +10,6 @@ interface CinematicIntroProps {
 
 type StagingStep =
   | 'idle'
-  | 'red'
   | 'yellow_1'
   | 'yellow_2'
   | 'yellow_3'
@@ -21,7 +20,7 @@ type StagingStep =
 export function CinematicIntro({ onComplete }: CinematicIntroProps) {
   const [step, setStep] = useState<StagingStep>('idle');
   const [mounted, setMounted] = useState(false);
-  const [rpm, setRpm] = useState(1100);
+  const [rpm, setRpm] = useState(1200);
   const rpmIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const completeIntro = useCallback(() => {
@@ -60,34 +59,26 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       return;
     }
 
-    // --- Choreographed Drag Racing Tree Timeline (RED -> YELLOW -> GREEN) ---
+    // --- Racing Rivals Countdown Timeline (3 Yellows -> Green Launch) ---
     const timers: NodeJS.Timeout[] = [];
 
-    // Step 1: RED lights ignite - Staged & Spooling (500ms)
-    timers.push(
-      setTimeout(() => {
-        setStep('red');
-        setRpm(4200);
-      }, 500)
-    );
-
-    // Step 2: Yellow 1 drops (1200ms)
+    // Step 1: Yellow 1 drops (600ms)
     timers.push(
       setTimeout(() => {
         setStep('yellow_1');
-        setRpm(6800);
-      }, 1200)
+        setRpm(6200);
+      }, 600)
     );
 
-    // Step 3: Yellow 2 drops (1850ms)
+    // Step 2: Yellow 2 drops (1300ms)
     timers.push(
       setTimeout(() => {
         setStep('yellow_2');
-        setRpm(8100);
-      }, 1850)
+        setRpm(7800);
+      }, 1300)
     );
 
-    // Step 4: Yellow 3 drops, rev limiter bounces (2500ms)
+    // Step 3: Yellow 3 drops, 2-step rev limiter bounces (2000ms)
     timers.push(
       setTimeout(() => {
         setStep('yellow_3');
@@ -95,23 +86,23 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
         rpmIntervalRef.current = setInterval(() => {
           setRpm(8850 + Math.floor(Math.random() * 80 - 40));
         }, 50);
-      }, 2500)
+      }, 2000)
     );
 
-    // Step 5: GREEN LIGHT BLAST! (3200ms)
+    // Step 4: GREEN LIGHT BLAST! (2700ms)
     timers.push(
       setTimeout(() => {
         if (rpmIntervalRef.current) clearInterval(rpmIntervalRef.current);
         setStep('green');
-        setRpm(9150);
-      }, 3200)
+        setRpm(9200);
+      }, 2700)
     );
 
-    // Step 6: Launch transition into page (4000ms)
+    // Step 5: Launch transition into page (3450ms)
     timers.push(
       setTimeout(() => {
         completeIntro();
-      }, 4000)
+      }, 3450)
     );
 
     return () => {
@@ -124,8 +115,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
     return null;
   }
 
-  // Active bulb states (Only Red, Yellow, Green)
-  const redOn = step === 'red' || step === 'yellow_1' || step === 'yellow_2' || step === 'yellow_3';
+  // Active bulb states (Only 3 Yellows and 1 Green - Racing Rivals Style)
   const yellow1On = step === 'yellow_1' || step === 'yellow_2' || step === 'yellow_3';
   const yellow2On = step === 'yellow_2' || step === 'yellow_3';
   const yellow3On = step === 'yellow_3';
@@ -175,14 +165,12 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               ? 'bg-[#00FF66]/25 scale-125'
               : yellow1On
               ? 'bg-[#FFB800]/20 scale-110'
-              : redOn
-              ? 'bg-[#E62935]/20 scale-100'
               : 'bg-transparent scale-90'
           }`}
         />
 
         {/* ======================================================== */}
-        {/* THE DRAG TREE TOWER (1 RED • 3 YELLOW • 1 GREEN)         */}
+        {/* RACING RIVALS TREE (3 SINGLE YELLOWS • 1 SINGLE GREEN)    */}
         {/* ======================================================== */}
         <div className="flex flex-col items-center mb-6 sm:mb-8">
           {/* Top Post Cap */}
@@ -190,25 +178,10 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
 
           {/* Tree Housing Box (Single Column) */}
           <div className="bg-[#121417] border border-white/15 px-3 py-3 sm:px-3.5 sm:py-3.5 shadow-[0_10px_35px_rgba(0,0,0,0.8)] flex flex-col items-center gap-2.5 relative">
-            {/* 1. SINGLE RED STAGING LIGHT */}
-            <div
-              className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-100 relative ${
-                redOn && !greenOn
-                  ? 'bg-[#E62935] border-[#FF4552] shadow-[0_0_25px_#E62935,0_0_50px_rgba(230,41,53,0.9)] scale-105'
-                  : 'bg-[#261416] border-white/10'
-              }`}
-            >
-              <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
-            </div>
-
-            {/* Tree Divider */}
-            <div className="w-full h-px bg-white/10 my-0.5" />
-
-            {/* 2. THREE SINGLE YELLOW COUNTDOWN LIGHTS */}
-            {/* Yellow 1 */}
+            {/* 1. YELLOW 1 (TOP) */}
             <div
               className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
-                yellow1On && !greenOn
+                yellow1On
                   ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.85)] scale-105'
                   : 'bg-[#2A2315] border-white/10'
               }`}
@@ -216,10 +189,10 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
             </div>
 
-            {/* Yellow 2 */}
+            {/* 2. YELLOW 2 (MIDDLE) */}
             <div
               className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
-                yellow2On && !greenOn
+                yellow2On
                   ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.85)] scale-105'
                   : 'bg-[#2A2315] border-white/10'
               }`}
@@ -227,10 +200,10 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
             </div>
 
-            {/* Yellow 3 */}
+            {/* 3. YELLOW 3 (THIRD) */}
             <div
               className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
-                yellow3On && !greenOn
+                yellow3On
                   ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_30px_#FFB800,0_0_60px_rgba(255,184,0,0.95)] scale-110'
                   : 'bg-[#2A2315] border-white/10'
               }`}
@@ -241,7 +214,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
             {/* Tree Divider */}
             <div className="w-full h-px bg-white/10 my-0.5" />
 
-            {/* 3. SINGLE GREEN LAUNCH LIGHT */}
+            {/* 4. GREEN LAUNCH LIGHT (BOTTOM) */}
             <div
               className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border transition-all duration-75 relative ${
                 greenOn
@@ -316,7 +289,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
                   ? 'bg-[#00FF66] shadow-[0_0_15px_#00FF66]'
                   : yellow1On
                   ? 'bg-gradient-to-r from-[#FFB800] to-[#E62935] shadow-[0_0_15px_#E62935]'
-                  : 'bg-[#E62935] shadow-[0_0_10px_#E62935]'
+                  : 'bg-[#FFB800]/40 shadow-[0_0_10px_#FFB800]'
               }`}
               style={{ width: `${Math.min(100, (rpm / 9200) * 100)}%` }}
             />
@@ -334,7 +307,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
                     ? 'text-[#E62935] animate-pulse'
                     : yellow1On
                     ? 'text-[#FFB800]'
-                    : 'text-[#FF4552]'
+                    : 'text-white'
                 }`}
               >
                 {rpm.toLocaleString()}

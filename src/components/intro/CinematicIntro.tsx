@@ -10,11 +10,10 @@ interface CinematicIntroProps {
 
 type StagingStep =
   | 'idle'
-  | 'pre_stage'
-  | 'staged'
-  | 'amber_1'
-  | 'amber_2'
-  | 'amber_3'
+  | 'red'
+  | 'yellow_1'
+  | 'yellow_2'
+  | 'yellow_3'
   | 'green'
   | 'launch'
   | 'done';
@@ -61,67 +60,58 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       return;
     }
 
-    // --- Choreographed Drag Racing Christmas Tree Staging Timeline (Slower, dramatic cadence) ---
+    // --- Choreographed Drag Racing Tree Timeline (RED -> YELLOW -> GREEN) ---
     const timers: NodeJS.Timeout[] = [];
 
-    // Step 1: Pre-Stage white bulbs click on (600ms)
+    // Step 1: RED lights ignite - Staged & Spooling (500ms)
     timers.push(
       setTimeout(() => {
-        setStep('pre_stage');
-        setRpm(2800);
-      }, 600)
+        setStep('red');
+        setRpm(4200);
+      }, 500)
     );
 
-    // Step 2: Stage white bulbs ignite, transbrake locks (1300ms)
+    // Step 2: Yellow 1 drops (1200ms)
     timers.push(
       setTimeout(() => {
-        setStep('staged');
-        setRpm(5200);
-      }, 1300)
+        setStep('yellow_1');
+        setRpm(6800);
+      }, 1200)
     );
 
-    // Step 3: Amber 1 drops (2000ms)
+    // Step 3: Yellow 2 drops (1850ms)
     timers.push(
       setTimeout(() => {
-        setStep('amber_1');
-        setRpm(7200);
-      }, 2000)
+        setStep('yellow_2');
+        setRpm(8100);
+      }, 1850)
     );
 
-    // Step 4: Amber 2 drops (2650ms)
+    // Step 4: Yellow 3 drops, rev limiter bounces (2500ms)
     timers.push(
       setTimeout(() => {
-        setStep('amber_2');
-        setRpm(8300);
-      }, 2650)
-    );
-
-    // Step 5: Amber 3 drops, rev limiter bounces (3300ms)
-    timers.push(
-      setTimeout(() => {
-        setStep('amber_3');
+        setStep('yellow_3');
         setRpm(8850);
-        // Jitter RPM on 2-step limiter
         rpmIntervalRef.current = setInterval(() => {
           setRpm(8850 + Math.floor(Math.random() * 80 - 40));
         }, 50);
-      }, 3300)
+      }, 2500)
     );
 
-    // Step 6: GREEN LIGHT BLAST! (4000ms)
+    // Step 5: GREEN LIGHT BLAST! (3200ms)
     timers.push(
       setTimeout(() => {
         if (rpmIntervalRef.current) clearInterval(rpmIntervalRef.current);
         setStep('green');
         setRpm(9150);
-      }, 4000)
+      }, 3200)
     );
 
-    // Step 7: Launch transition into page (4800ms)
+    // Step 6: Launch transition into page (4000ms)
     timers.push(
       setTimeout(() => {
         completeIntro();
-      }, 4800)
+      }, 4000)
     );
 
     return () => {
@@ -134,21 +124,12 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
     return null;
   }
 
-  // Active bulb states
-  const preStageOn = step !== 'idle';
-  const stageOn =
-    step === 'staged' ||
-    step === 'amber_1' ||
-    step === 'amber_2' ||
-    step === 'amber_3' ||
-    step === 'green' ||
-    step === 'launch';
-  const amber1On = step === 'amber_1' || step === 'amber_2' || step === 'amber_3';
-  const amber2On = step === 'amber_2' || step === 'amber_3';
-  const amber3On = step === 'amber_3';
+  // Active bulb states (Only Red, Yellow, Green)
+  const redOn = step === 'red' || step === 'yellow_1' || step === 'yellow_2' || step === 'yellow_3';
+  const yellow1On = step === 'yellow_1' || step === 'yellow_2' || step === 'yellow_3';
+  const yellow2On = step === 'yellow_2' || step === 'yellow_3';
+  const yellow3On = step === 'yellow_3';
   const greenOn = step === 'green' || step === 'launch';
-
-
 
   return (
     <div
@@ -192,80 +173,63 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
           className={`absolute w-80 h-80 sm:w-96 sm:h-96 rounded-full blur-3xl transition-all duration-500 pointer-events-none ${
             greenOn
               ? 'bg-[#00FF66]/25 scale-125'
-              : amber1On
+              : yellow1On
               ? 'bg-[#FFB800]/20 scale-110'
-              : preStageOn
-              ? 'bg-white/10 scale-100'
+              : redOn
+              ? 'bg-[#E62935]/20 scale-100'
               : 'bg-transparent scale-90'
           }`}
         />
 
         {/* ======================================================== */}
-        {/* THE CHRISTMAS TREE TOWER (Authentic Drag Strip Staging)   */}
+        {/* THE DRAG TREE TOWER (RED • YELLOW • GREEN)               */}
         {/* ======================================================== */}
         <div className="flex flex-col items-center mb-6 sm:mb-8">
           {/* Top Post Cap */}
           <div className="w-16 h-1.5 bg-[#22262B] border-t border-x border-white/15" />
 
           {/* Tree Housing Box */}
-          <div className="bg-[#121417] border border-white/15 px-3 py-3 sm:px-4 sm:py-3.5 shadow-[0_10px_35px_rgba(0,0,0,0.8)] flex flex-col items-center gap-2 relative">
-            {/* 1. PRE-STAGE WHITE BULBS (Dual mini bulbs) */}
-            <div className="flex items-center gap-3">
+          <div className="bg-[#121417] border border-white/15 px-3.5 py-3.5 sm:px-4 sm:py-4 shadow-[0_10px_35px_rgba(0,0,0,0.8)] flex flex-col items-center gap-2.5 relative">
+            {/* 1. RED STAGING FLOODLIGHTS (Top Pair) */}
+            <div className="flex items-center gap-4">
               <div
-                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border transition-all duration-100 ${
-                  preStageOn
-                    ? 'bg-white border-white shadow-[0_0_15px_#FFFFFF,0_0_25px_rgba(255,255,255,0.8)]'
-                    : 'bg-[#1E2227] border-white/10'
+                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-100 relative ${
+                  redOn && !greenOn
+                    ? 'bg-[#E62935] border-[#FF4552] shadow-[0_0_20px_#E62935,0_0_40px_rgba(230,41,53,0.85)] scale-105'
+                    : 'bg-[#261416] border-white/10'
                 }`}
-              />
-              <span className="text-[8px] font-mono tracking-widest text-white/40 uppercase">PRE</span>
+              >
+                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
+              </div>
               <div
-                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border transition-all duration-100 ${
-                  preStageOn
-                    ? 'bg-white border-white shadow-[0_0_15px_#FFFFFF,0_0_25px_rgba(255,255,255,0.8)]'
-                    : 'bg-[#1E2227] border-white/10'
+                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-100 relative ${
+                  redOn && !greenOn
+                    ? 'bg-[#E62935] border-[#FF4552] shadow-[0_0_20px_#E62935,0_0_40px_rgba(230,41,53,0.85)] scale-105'
+                    : 'bg-[#261416] border-white/10'
                 }`}
-              />
-            </div>
-
-            {/* 2. STAGE WHITE BULBS (Dual mini bulbs) */}
-            <div className="flex items-center gap-3">
-              <div
-                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border transition-all duration-100 ${
-                  stageOn
-                    ? 'bg-white border-white shadow-[0_0_15px_#FFFFFF,0_0_25px_rgba(255,255,255,0.8)]'
-                    : 'bg-[#1E2227] border-white/10'
-                }`}
-              />
-              <span className="text-[8px] font-mono tracking-widest text-white/40 uppercase">STG</span>
-              <div
-                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border transition-all duration-100 ${
-                  stageOn
-                    ? 'bg-white border-white shadow-[0_0_15px_#FFFFFF,0_0_25px_rgba(255,255,255,0.8)]'
-                    : 'bg-[#1E2227] border-white/10'
-                }`}
-              />
+              >
+                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
+              </div>
             </div>
 
             {/* Tree Divider */}
             <div className="w-full h-px bg-white/10 my-0.5" />
 
-            {/* 3. AMBER COUNTDOWN FLOODLIGHTS (Dual pair) */}
-            {/* Amber 1 */}
+            {/* 2. YELLOW COUNTDOWN FLOODLIGHTS (3 Pairs) */}
+            {/* Yellow 1 */}
             <div className="flex items-center gap-4">
               <div
                 className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  amber1On && !greenOn
+                  yellow1On && !greenOn
                     ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
                     : 'bg-[#2A2315] border-white/10'
                 }`}
               >
-                {/* Hood visor highlight */}
                 <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
               </div>
               <div
                 className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  amber1On && !greenOn
+                  yellow1On && !greenOn
                     ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
                     : 'bg-[#2A2315] border-white/10'
                 }`}
@@ -274,11 +238,11 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               </div>
             </div>
 
-            {/* Amber 2 */}
+            {/* Yellow 2 */}
             <div className="flex items-center gap-4">
               <div
                 className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  amber2On && !greenOn
+                  yellow2On && !greenOn
                     ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
                     : 'bg-[#2A2315] border-white/10'
                 }`}
@@ -287,7 +251,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               </div>
               <div
                 className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  amber2On && !greenOn
+                  yellow2On && !greenOn
                     ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
                     : 'bg-[#2A2315] border-white/10'
                 }`}
@@ -296,11 +260,11 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               </div>
             </div>
 
-            {/* Amber 3 */}
+            {/* Yellow 3 */}
             <div className="flex items-center gap-4">
               <div
                 className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  amber3On && !greenOn
+                  yellow3On && !greenOn
                     ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.9)] scale-110'
                     : 'bg-[#2A2315] border-white/10'
                 }`}
@@ -309,7 +273,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               </div>
               <div
                 className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  amber3On && !greenOn
+                  yellow3On && !greenOn
                     ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.9)] scale-110'
                     : 'bg-[#2A2315] border-white/10'
                 }`}
@@ -321,7 +285,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
             {/* Tree Divider */}
             <div className="w-full h-px bg-white/10 my-0.5" />
 
-            {/* 4. GREEN LAUNCH FLOODLIGHTS (Dual pair) */}
+            {/* 3. GREEN LAUNCH FLOODLIGHTS (Bottom Pair) */}
             <div className="flex items-center gap-4">
               <div
                 className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
@@ -380,7 +344,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
             {[...Array(8)].map((_, i) => {
               const active = rpm > 2000 + i * 880;
               const isRed = i >= 6;
-              const isAmber = i >= 3 && i < 6;
+              const isYellow = i >= 3 && i < 6;
 
               return (
                 <div
@@ -389,7 +353,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
                     active
                       ? isRed
                         ? 'bg-[#E62935] border-[#FF4552] shadow-[0_0_10px_#E62935]'
-                        : isAmber
+                        : isYellow
                         ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_10px_#FFB800]'
                         : 'bg-[#00FF66] border-[#70FFA3] shadow-[0_0_10px_#00FF66]'
                       : 'bg-white/5 border-white/10'
@@ -405,15 +369,15 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               className={`h-full transition-all duration-100 ease-out ${
                 greenOn
                   ? 'bg-[#00FF66] shadow-[0_0_15px_#00FF66]'
-                  : amber1On
+                  : yellow1On
                   ? 'bg-gradient-to-r from-[#FFB800] to-[#E62935] shadow-[0_0_15px_#E62935]'
-                  : 'bg-gradient-to-r from-white/40 to-white shadow-[0_0_10px_white]'
+                  : 'bg-[#E62935] shadow-[0_0_10px_#E62935]'
               }`}
               style={{ width: `${Math.min(100, (rpm / 9200) * 100)}%` }}
             />
           </div>
 
-          {/* Telemetry Numbers & Status */}
+          {/* Telemetry Numbers */}
           <div className="flex items-center justify-between w-full font-mono text-[11px] sm:text-xs">
             <div className="flex items-center gap-1.5">
               <span className="text-[#A4A7AC]">RPM:</span>
@@ -421,11 +385,11 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
                 className={`font-bold tabular-nums transition-colors ${
                   greenOn
                     ? 'text-[#00FF66]'
-                    : amber3On
+                    : yellow3On
                     ? 'text-[#E62935] animate-pulse'
-                    : amber1On
+                    : yellow1On
                     ? 'text-[#FFB800]'
-                    : 'text-white'
+                    : 'text-[#FF4552]'
                 }`}
               >
                 {rpm.toLocaleString()}

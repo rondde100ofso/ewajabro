@@ -61,42 +61,42 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       return;
     }
 
-    // --- Choreographed Drag Racing Christmas Tree Staging Timeline ---
+    // --- Choreographed Drag Racing Christmas Tree Staging Timeline (Slower, dramatic cadence) ---
     const timers: NodeJS.Timeout[] = [];
 
-    // Step 1: Pre-Stage white bulbs click on (300ms)
+    // Step 1: Pre-Stage white bulbs click on (600ms)
     timers.push(
       setTimeout(() => {
         setStep('pre_stage');
         setRpm(2800);
-      }, 300)
+      }, 600)
     );
 
-    // Step 2: Stage white bulbs ignite, transbrake locks (650ms)
+    // Step 2: Stage white bulbs ignite, transbrake locks (1300ms)
     timers.push(
       setTimeout(() => {
         setStep('staged');
         setRpm(5200);
-      }, 650)
+      }, 1300)
     );
 
-    // Step 3: Amber 1 drops (1000ms)
+    // Step 3: Amber 1 drops (2000ms)
     timers.push(
       setTimeout(() => {
         setStep('amber_1');
-        setRpm(7100);
-      }, 1000)
+        setRpm(7200);
+      }, 2000)
     );
 
-    // Step 4: Amber 2 drops (1250ms)
+    // Step 4: Amber 2 drops (2650ms)
     timers.push(
       setTimeout(() => {
         setStep('amber_2');
-        setRpm(8250);
-      }, 1250)
+        setRpm(8300);
+      }, 2650)
     );
 
-    // Step 5: Amber 3 drops, rev limiter bounces (1500ms)
+    // Step 5: Amber 3 drops, rev limiter bounces (3300ms)
     timers.push(
       setTimeout(() => {
         setStep('amber_3');
@@ -105,23 +105,23 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
         rpmIntervalRef.current = setInterval(() => {
           setRpm(8850 + Math.floor(Math.random() * 80 - 40));
         }, 50);
-      }, 1500)
+      }, 3300)
     );
 
-    // Step 6: GREEN LIGHT BLAST! (1750ms)
+    // Step 6: GREEN LIGHT BLAST! (4000ms)
     timers.push(
       setTimeout(() => {
         if (rpmIntervalRef.current) clearInterval(rpmIntervalRef.current);
         setStep('green');
-        setRpm(9100);
-      }, 1750)
+        setRpm(9150);
+      }, 4000)
     );
 
-    // Step 7: Launch transition into page (2150ms)
+    // Step 7: Launch transition into page (4800ms)
     timers.push(
       setTimeout(() => {
         completeIntro();
-      }, 2150)
+      }, 4800)
     );
 
     return () => {
@@ -148,27 +148,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
   const amber3On = step === 'amber_3';
   const greenOn = step === 'green' || step === 'launch';
 
-  // Staging text badge
-  const getStatusBadge = () => {
-    switch (step) {
-      case 'idle':
-        return { text: 'APPROACHING STAGING BOX', color: 'text-[#A4A7AC]', border: 'border-white/10' };
-      case 'pre_stage':
-        return { text: 'PRE-STAGE LIT // ALIGNING WHEELS', color: 'text-white', border: 'border-white/40' };
-      case 'staged':
-        return { text: 'FULLY STAGED // TRANSBRAKE LOCKED', color: 'text-[#00F0FF]', border: 'border-[#00F0FF]/50' };
-      case 'amber_1':
-      case 'amber_2':
-        return { text: 'COUNTDOWN // BOOST SPOOLING', color: 'text-[#FFB800]', border: 'border-[#FFB800]/50' };
-      case 'amber_3':
-        return { text: '2-STEP REV LIMITER PEGGED', color: 'text-[#E62935]', border: 'border-[#E62935]' };
-      case 'green':
-      case 'launch':
-        return { text: 'GREEN LIGHT // LAUNCH!', color: 'text-[#00FF66]', border: 'border-[#00FF66]' };
-    }
-  };
 
-  const status = getStatusBadge();
 
   return (
     <div
@@ -456,13 +436,6 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               <span>GEAR:</span>
               <span className="text-white font-bold">{greenOn ? '1ST [LAUNCH]' : 'N // TRANSBRAKE'}</span>
             </div>
-          </div>
-
-          {/* Tactical Status Badge */}
-          <div
-            className={`mt-3 px-3 py-1 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest border transition-all duration-150 ${status.color} ${status.border} bg-black/60 backdrop-blur-sm shadow-lg`}
-          >
-            {status.text}
           </div>
         </div>
       </div>

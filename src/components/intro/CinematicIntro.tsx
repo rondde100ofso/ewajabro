@@ -182,134 +182,79 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
         />
 
         {/* ======================================================== */}
-        {/* THE DRAG TREE TOWER (RED • YELLOW • GREEN)               */}
+        {/* THE DRAG TREE TOWER (1 RED • 3 YELLOW • 1 GREEN)         */}
         {/* ======================================================== */}
         <div className="flex flex-col items-center mb-6 sm:mb-8">
           {/* Top Post Cap */}
-          <div className="w-16 h-1.5 bg-[#22262B] border-t border-x border-white/15" />
+          <div className="w-12 h-1.5 bg-[#22262B] border-t border-x border-white/15" />
 
-          {/* Tree Housing Box */}
-          <div className="bg-[#121417] border border-white/15 px-3.5 py-3.5 sm:px-4 sm:py-4 shadow-[0_10px_35px_rgba(0,0,0,0.8)] flex flex-col items-center gap-2.5 relative">
-            {/* 1. RED STAGING FLOODLIGHTS (Top Pair) */}
-            <div className="flex items-center gap-4">
-              <div
-                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-100 relative ${
-                  redOn && !greenOn
-                    ? 'bg-[#E62935] border-[#FF4552] shadow-[0_0_20px_#E62935,0_0_40px_rgba(230,41,53,0.85)] scale-105'
-                    : 'bg-[#261416] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
-              </div>
-              <div
-                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-100 relative ${
-                  redOn && !greenOn
-                    ? 'bg-[#E62935] border-[#FF4552] shadow-[0_0_20px_#E62935,0_0_40px_rgba(230,41,53,0.85)] scale-105'
-                    : 'bg-[#261416] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
-              </div>
+          {/* Tree Housing Box (Single Column) */}
+          <div className="bg-[#121417] border border-white/15 px-3 py-3 sm:px-3.5 sm:py-3.5 shadow-[0_10px_35px_rgba(0,0,0,0.8)] flex flex-col items-center gap-2.5 relative">
+            {/* 1. SINGLE RED STAGING LIGHT */}
+            <div
+              className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-100 relative ${
+                redOn && !greenOn
+                  ? 'bg-[#E62935] border-[#FF4552] shadow-[0_0_25px_#E62935,0_0_50px_rgba(230,41,53,0.9)] scale-105'
+                  : 'bg-[#261416] border-white/10'
+              }`}
+            >
+              <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
             </div>
 
             {/* Tree Divider */}
             <div className="w-full h-px bg-white/10 my-0.5" />
 
-            {/* 2. YELLOW COUNTDOWN FLOODLIGHTS (3 Pairs) */}
+            {/* 2. THREE SINGLE YELLOW COUNTDOWN LIGHTS */}
             {/* Yellow 1 */}
-            <div className="flex items-center gap-4">
-              <div
-                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  yellow1On && !greenOn
-                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
-                    : 'bg-[#2A2315] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
-              </div>
-              <div
-                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  yellow1On && !greenOn
-                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
-                    : 'bg-[#2A2315] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
-              </div>
+            <div
+              className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
+                yellow1On && !greenOn
+                  ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.85)] scale-105'
+                  : 'bg-[#2A2315] border-white/10'
+              }`}
+            >
+              <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
             </div>
 
             {/* Yellow 2 */}
-            <div className="flex items-center gap-4">
-              <div
-                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  yellow2On && !greenOn
-                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
-                    : 'bg-[#2A2315] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
-              </div>
-              <div
-                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  yellow2On && !greenOn
-                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_20px_#FFB800,0_0_40px_rgba(255,184,0,0.8)] scale-105'
-                    : 'bg-[#2A2315] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
-              </div>
+            <div
+              className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
+                yellow2On && !greenOn
+                  ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.85)] scale-105'
+                  : 'bg-[#2A2315] border-white/10'
+              }`}
+            >
+              <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
             </div>
 
             {/* Yellow 3 */}
-            <div className="flex items-center gap-4">
-              <div
-                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  yellow3On && !greenOn
-                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.9)] scale-110'
-                    : 'bg-[#2A2315] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
-              </div>
-              <div
-                className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border transition-all duration-75 relative ${
-                  yellow3On && !greenOn
-                    ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_25px_#FFB800,0_0_50px_rgba(255,184,0,0.9)] scale-110'
-                    : 'bg-[#2A2315] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
-              </div>
+            <div
+              className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
+                yellow3On && !greenOn
+                  ? 'bg-[#FFB800] border-[#FFE600] shadow-[0_0_30px_#FFB800,0_0_60px_rgba(255,184,0,0.95)] scale-110'
+                  : 'bg-[#2A2315] border-white/10'
+              }`}
+            >
+              <div className="absolute top-0 inset-x-0 h-1 bg-black/40 rounded-t-full" />
             </div>
 
             {/* Tree Divider */}
             <div className="w-full h-px bg-white/10 my-0.5" />
 
-            {/* 3. GREEN LAUNCH FLOODLIGHTS (Bottom Pair) */}
-            <div className="flex items-center gap-4">
-              <div
-                className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
-                  greenOn
-                    ? 'bg-[#00FF66] border-[#70FFA3] shadow-[0_0_35px_#00FF66,0_0_70px_rgba(0,255,102,1)] scale-115'
-                    : 'bg-[#122619] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1.5 bg-black/40 rounded-t-full" />
-              </div>
-              <div
-                className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-75 relative ${
-                  greenOn
-                    ? 'bg-[#00FF66] border-[#70FFA3] shadow-[0_0_35px_#00FF66,0_0_70px_rgba(0,255,102,1)] scale-115'
-                    : 'bg-[#122619] border-white/10'
-                }`}
-              >
-                <div className="absolute top-0 inset-x-0 h-1.5 bg-black/40 rounded-t-full" />
-              </div>
+            {/* 3. SINGLE GREEN LAUNCH LIGHT */}
+            <div
+              className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border transition-all duration-75 relative ${
+                greenOn
+                  ? 'bg-[#00FF66] border-[#70FFA3] shadow-[0_0_40px_#00FF66,0_0_80px_rgba(0,255,102,1)] scale-115'
+                  : 'bg-[#122619] border-white/10'
+              }`}
+            >
+              <div className="absolute top-0 inset-x-0 h-1.5 bg-black/40 rounded-t-full" />
             </div>
           </div>
 
           {/* Tree Base Post */}
-          <div className="w-6 h-4 bg-[#1E2227] border-b border-x border-white/15" />
+          <div className="w-5 h-4 bg-[#1E2227] border-b border-x border-white/15" />
         </div>
 
         {/* ======================================================== */}

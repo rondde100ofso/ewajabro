@@ -2,12 +2,13 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Download, Play, Volume2, VolumeX, X, Film } from 'lucide-react';
+import { Download, Play, Pause, Volume2, VolumeX, X, Film } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Button } from '@/components/ui/Button';
 
 export function HeroSection() {
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [trailerModalOpen, setTrailerModalOpen] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -20,6 +21,16 @@ export function HeroSection() {
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  // Attempt autoplay on mount
+  useEffect(() => {
+    if (videoRef.current) {
+      const p = videoRef.current.play();
+      if (p !== undefined) {
+        p.then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+      }
+    }
   }, []);
 
   // Handle trailer modal escape key
@@ -48,6 +59,20 @@ export function HeroSection() {
     }
   };
 
+  const togglePlayback = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch(() => setIsPlaying(false));
+      }
+    }
+  };
+
   return (
     <>
       <section
@@ -69,6 +94,21 @@ export function HeroSection() {
             />
           </div>
 
+          {/* Logo in the back when background trailer is not playing */}
+          {(!videoLoaded || !isPlaying) && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[6] transition-opacity duration-1000">
+              <div className="relative w-[340px] sm:w-[540px] md:w-[720px] lg:w-[860px] aspect-[1535/1024] max-w-[88vw] opacity-40 md:opacity-45 filter drop-shadow-[0_0_80px_rgba(230,41,53,0.45)]">
+                <Image
+                  src={siteConfig.assets.logo}
+                  alt="Rivals Reborn Logo"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          )}
+
           {/* Video Element from supplied introvideo.mp4 */}
           {siteConfig.assets.heroVideo && !prefersReducedMotion && (
             <video
@@ -79,9 +119,17 @@ export function HeroSection() {
               muted={isMuted}
               loop
               playsInline
-              onCanPlay={() => setVideoLoaded(true)}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onEnded={() => setIsPlaying(false)}
+              onCanPlay={() => {
+                setVideoLoaded(true);
+                if (videoRef.current && !videoRef.current.paused) {
+                  setIsPlaying(true);
+                }
+              }}
               className={`absolute inset-0 w-full h-full object-cover filter brightness-[0.78] contrast-[1.12] transition-opacity duration-1000 ${
-                videoLoaded ? 'opacity-100' : 'opacity-0'
+                videoLoaded && isPlaying ? 'opacity-100' : 'opacity-0'
               }`}
             />
           )}
@@ -94,26 +142,49 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-grid-pattern opacity-30 z-10 pointer-events-none" />
         </div>
 
-        {/* Audio Toggle Control in bottom right */}
-        {siteConfig.assets.heroVideo && videoLoaded && !prefersReducedMotion && (
-          <button
-            type="button"
-            onClick={toggleSound}
-            aria-label={isMuted ? 'Unmute hero background video' : 'Mute hero background video'}
-            className="absolute bottom-4 right-4 sm:bottom-10 sm:right-10 z-20 flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-xs font-semibold uppercase tracking-wider text-[#A4A7AC] hover:text-white bg-black/75 hover:bg-black/90 border border-white/10 hover:border-white/20 rounded backdrop-blur-md transition-all"
-          >
-            {isMuted ? (
-              <>
-                <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A4A7AC]" />
-                <span className="hidden sm:inline">Audio Off</span>
-              </>
-            ) : (
-              <>
-                <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E62935]" />
-                <span className="text-[#E62935] hidden sm:inline">Audio On</span>
-              </>
+        {/* Background Trailer Controls (Play/Pause & Audio) in bottom right */}
+        {siteConfig.assets.heroVideo && !prefersReducedMotion && (
+          <div className="absolute bottom-4 right-4 sm:bottom-10 sm:right-10 z-20 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={togglePlayback}
+              aria-label={isPlaying ? 'Pause background trailer' : 'Play background trailer'}
+              className="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-xs font-semibold uppercase tracking-wider text-[#A4A7AC] hover:text-white bg-black/75 hover:bg-black/90 border border-white/10 hover:border-white/20 rounded backdrop-blur-md transition-all cursor-pointer"
+            >
+              {isPlaying ? (
+                <>
+                  <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A4A7AC]" />
+                  <span className="hidden sm:inline">Pause Video</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E62935] fill-current" />
+                  <span className="text-[#E62935] hidden sm:inline">Play Video</span>
+                </>
+              )}
+            </button>
+
+            {videoLoaded && (
+              <button
+                type="button"
+                onClick={toggleSound}
+                aria-label={isMuted ? 'Unmute hero background video' : 'Mute hero background video'}
+                className="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-xs font-semibold uppercase tracking-wider text-[#A4A7AC] hover:text-white bg-black/75 hover:bg-black/90 border border-white/10 hover:border-white/20 rounded backdrop-blur-md transition-all cursor-pointer"
+              >
+                {isMuted ? (
+                  <>
+                    <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A4A7AC]" />
+                    <span className="hidden sm:inline">Audio Off</span>
+                  </>
+                ) : (
+                  <>
+                    <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E62935]" />
+                    <span className="text-[#E62935] hidden sm:inline">Audio On</span>
+                  </>
+                )}
+              </button>
             )}
-          </button>
+          </div>
         )}
 
         {/* Hero Foreground Content */}

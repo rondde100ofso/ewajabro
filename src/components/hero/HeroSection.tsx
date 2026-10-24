@@ -82,22 +82,10 @@ export function HeroSection() {
       >
         {/* Background Media Container */}
         <div className="absolute inset-0 z-0">
-          {/* Poster Image (Primary visual & instant fallback) */}
-          <div className="relative w-full h-full">
-            <Image
-              src={siteConfig.assets.heroPoster}
-              alt="Rivals Reborn high stakes drag racing machines at starting line"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-center filter brightness-[0.78] contrast-[1.12]"
-            />
-          </div>
-
           {/* Logo in the back when background trailer is not playing */}
           {(!videoLoaded || !isPlaying) && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[6] transition-opacity duration-1000">
-              <div className="relative w-[340px] sm:w-[540px] md:w-[720px] lg:w-[860px] aspect-[1535/1024] max-w-[88vw] opacity-40 md:opacity-45 filter drop-shadow-[0_0_80px_rgba(230,41,53,0.45)]">
+              <div className="relative w-[340px] sm:w-[560px] md:w-[760px] lg:w-[920px] aspect-[1535/1024] max-w-[90vw] opacity-75 sm:opacity-85 filter drop-shadow-[0_0_90px_rgba(230,41,53,0.5)]">
                 <Image
                   src={siteConfig.assets.logo}
                   alt="Rivals Reborn Logo"
@@ -114,7 +102,6 @@ export function HeroSection() {
             <video
               ref={videoRef}
               src={siteConfig.assets.heroVideo}
-              poster={siteConfig.assets.heroPoster}
               autoPlay
               muted={isMuted}
               loop

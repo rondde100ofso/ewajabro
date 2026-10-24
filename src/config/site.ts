@@ -176,7 +176,7 @@ export const siteConfig: SiteConfig = {
       imageSrc: '/images/feature-customization.jpg',
       imageAlt: 'Customized drag car visual customization and aerodynamic styling',
       stats: [
-        { label: 'Finishes', value: 'Candy, Satin & Carbon' },
+        { label: 'Finishes', value: 'Matte, Satin, Metallic' },
         { label: 'Aero', value: 'Full Drag Kits & Spoilers' },
       ],
     },

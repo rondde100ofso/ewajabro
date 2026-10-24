@@ -10,7 +10,7 @@ export function GameplayGallery() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const categories = ['All', 'Drag Racing', 'Garage'];
+  const categories = ['All', 'Garage', 'Tuning', 'Drag Racing', 'Customization'];
 
   const filteredItems =
     selectedCategory === 'All'
@@ -89,7 +89,7 @@ export function GameplayGallery() {
             )}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
             {filteredItems.map((item, index) => {
               return (
                 <div

@@ -145,8 +145,9 @@ export const siteConfig: SiteConfig = {
       title: 'TUNE, COMPETE, COLLECT',
       description:
         'Buy, upgrade, and win distinguished racing machines to dominate the strip. Every vehicle in your garage carries distinct power to weight ratios, drivetrain dynamics, and upgrade paths designed for raw quarter mile dominance and pushing to your absolute limits.',
-      imageSrc: '/images/feature-garage.jpg',
-      imageAlt: 'High performance tuning garage featuring customized drag vehicles',
+      imageSrc: '/images/feature-garage.png',
+      imageAlt: 'Pagani Zonda Revolucion in the Rivals Reborn garage workshop',
+      aspectRatio: '1024 / 470',
       stats: [
         { label: 'Drivetrains', value: 'RWD / AWD / FWD' },
         { label: 'Classes', value: 'D to R3' },

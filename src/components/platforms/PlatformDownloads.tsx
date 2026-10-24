@@ -22,9 +22,9 @@ export function PlatformDownloads() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <Badge variant="red" className="mb-4">
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#E62935] mb-3">
             PLATFORM AVAILABILITY
-          </Badge>
+          </p>
           <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight text-[#F5F5F3]">
             BUILT FOR IOS & ANDROID
           </h2>
@@ -44,7 +44,7 @@ export function PlatformDownloads() {
                   <Apple className="w-7 h-7 sm:w-8 sm:h-8" />
                 </div>
                 <div>
-                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#A4A7AC] uppercase block">
+                  <span className="text-[11px] font-medium tracking-wider text-[#A4A7AC] uppercase block">
                     Download on the
                   </span>
                   <h3 className="font-display font-bold text-xl sm:text-2xl uppercase tracking-wider text-[#F5F5F3]">
@@ -59,17 +59,17 @@ export function PlatformDownloads() {
             </div>
 
             <div className="my-6 sm:my-8 space-y-2 border-t border-b border-white/5 py-4">
-              <div className="flex justify-between text-xs font-mono">
+              <div className="flex justify-between text-xs">
                 <span className="text-[#A4A7AC]">Platform:</span>
                 <span className="text-[#F5F5F3]">iPhone & iPad (TestFlight)</span>
               </div>
-              <div className="flex justify-between text-xs font-mono">
+              <div className="flex justify-between text-xs">
                 <span className="text-[#A4A7AC]">Requirements:</span>
                 <span className="text-[#F5F5F3]">{ios.minVersion}</span>
               </div>
-              <div className="flex justify-between text-xs font-mono">
+              <div className="flex justify-between text-xs">
                 <span className="text-[#A4A7AC]">Testing Phase:</span>
-                <span className="text-[#FF4552]">Closed Invite Only Alpha</span>
+                <span className="text-[#E62935] font-medium">Closed Invite Only Alpha</span>
               </div>
             </div>
 
@@ -102,7 +102,7 @@ export function PlatformDownloads() {
                   <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-current" />
                 </div>
                 <div>
-                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#A4A7AC] uppercase block">
+                  <span className="text-[11px] font-medium tracking-wider text-[#A4A7AC] uppercase block">
                     Get it on
                   </span>
                   <h3 className="font-display font-bold text-xl sm:text-2xl uppercase tracking-wider text-[#F5F5F3]">
@@ -117,17 +117,17 @@ export function PlatformDownloads() {
             </div>
 
             <div className="my-6 sm:my-8 space-y-2 border-t border-b border-white/5 py-4">
-              <div className="flex justify-between text-xs font-mono">
+              <div className="flex justify-between text-xs">
                 <span className="text-[#A4A7AC]">Platform:</span>
                 <span className="text-[#F5F5F3]">Android (Internal Test Track)</span>
               </div>
-              <div className="flex justify-between text-xs font-mono">
+              <div className="flex justify-between text-xs">
                 <span className="text-[#A4A7AC]">Requirements:</span>
                 <span className="text-[#F5F5F3]">{android.minVersion}</span>
               </div>
-              <div className="flex justify-between text-xs font-mono">
+              <div className="flex justify-between text-xs">
                 <span className="text-[#A4A7AC]">Testing Phase:</span>
-                <span className="text-[#FF4552]">Closed Invite Only Alpha</span>
+                <span className="text-[#E62935] font-medium">Closed Invite Only Alpha</span>
               </div>
             </div>
 
@@ -156,13 +156,12 @@ export function PlatformDownloads() {
         {/* Closed Alpha & Discord Community Announcement */}
         <div className="mt-12 max-w-4xl mx-auto bg-[#141619]/80 border border-white/10 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-[#E62935]/10 border border-[#E62935]/30 text-[#FF4552] flex-shrink-0">
+            <div className="p-3 bg-white/5 border border-white/10 text-[#E62935] rounded-lg flex-shrink-0">
               <Bell className="w-6 h-6" />
             </div>
             <div>
-              <div className="inline-flex items-center gap-2 mb-1">
-                <span className="w-2 h-2 rounded-full bg-[#E62935] animate-ping" />
-                <span className="text-xs font-mono uppercase tracking-widest text-[#FF4552]">
+              <div className="inline-flex items-center mb-1">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#E62935]">
                   Under Development &bull; Invite Only Alpha
                 </span>
               </div>

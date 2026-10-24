@@ -3,7 +3,6 @@
 import React from 'react';
 import { MessageSquare, ArrowUpRight } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { Badge } from '@/components/ui/Badge';
 
 export function CommunitySection() {
   const getIcon = (iconName: string) => {
@@ -68,9 +67,9 @@ export function CommunitySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <Badge variant="red" className="mb-4">
-            COMMUNITY & DEV LOGS
-          </Badge>
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#E62935] mb-3">
+            COMMUNITY &amp; DEV LOGS
+          </p>
           <h2 className="font-display font-black text-4xl sm:text-6xl uppercase tracking-tight text-[#F5F5F3]">
             YOUR RIVALS ARE OUT THERE.
           </h2>
@@ -110,7 +109,7 @@ export function CommunitySection() {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-[#A4A7AC]">
+                <div className="mt-6 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-medium text-[#A4A7AC]">
                   <span>OFFICIAL HUB</span>
                   <span className="text-[#E62935] group-hover:underline">Connect &rarr;</span>
                 </div>

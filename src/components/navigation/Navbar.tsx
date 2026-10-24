@@ -45,8 +45,8 @@ export function Navbar() {
       >
         {/* Top Announcement Bar if enabled */}
         {siteConfig.announcement.enabled && !scrolled && (
-          <div className="hidden md:flex items-center justify-center gap-2.5 pb-3 text-xs font-mono tracking-wider text-[#A4A7AC] border-b border-white/5 mb-3">
-            <span className="inline-block px-2 py-0.5 text-[10px] uppercase font-bold bg-[#E62935]/20 text-[#FF4552] border border-[#E62935]/30 rounded">
+          <div className="hidden md:flex items-center justify-center gap-2.5 pb-3 text-xs font-medium text-[#A4A7AC] border-b border-white/5 mb-3">
+            <span className="inline-block px-2 py-0.5 text-[10px] uppercase font-bold bg-[#E62935] text-white rounded">
               {siteConfig.announcement.badge}
             </span>
             <span>{siteConfig.announcement.text}</span>

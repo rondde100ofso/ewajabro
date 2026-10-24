@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Download, Flag } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
 
 export function FinalCTA() {
   return (
@@ -28,10 +27,10 @@ export function FinalCTA() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        <Badge variant="red" className="mb-6">
-          <Flag className="w-3.5 h-3.5" />
+        <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#E62935] mb-4 flex items-center justify-center gap-2">
+          <Flag className="w-4 h-4" />
           <span>JOIN THE ROSTER</span>
-        </Badge>
+        </p>
 
         <h2 className="font-display font-black text-5xl sm:text-7xl md:text-8xl uppercase tracking-tight text-[#F5F5F3] leading-[0.9]">
           YOUR NEXT RIVAL
@@ -69,7 +68,7 @@ export function FinalCTA() {
           )}
         </div>
 
-        <p className="mt-6 text-xs font-mono text-[#A4A7AC]/60 uppercase tracking-widest">
+        <p className="mt-6 text-xs text-[#A4A7AC]/60 uppercase tracking-wider">
           Competitive Mobile Drag Racing • Coming to iOS & Android
         </p>
       </div>

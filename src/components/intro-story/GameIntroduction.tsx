@@ -2,9 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Gauge, Flame, Trophy, ShieldAlert } from 'lucide-react';
+import { Gauge, Flame, Trophy } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { Badge } from '@/components/ui/Badge';
 
 export function GameIntroduction() {
   return (
@@ -17,9 +16,9 @@ export function GameIntroduction() {
         {/* Editorial Top Headline */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-16 sm:mb-24">
           <div className="lg:col-span-8">
-            <Badge variant="red" className="mb-4">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#E62935] mb-3">
               THE VISION
-            </Badge>
+            </p>
             <h2 className="font-display font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-[#F5F5F3] leading-[0.92]">
               BUILT FOR THE ONES
               <br />
@@ -48,12 +47,12 @@ export function GameIntroduction() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30" />
 
-            {/* Corner telemetry overlays */}
-            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 font-mono text-[10px] sm:text-xs text-white/80 tracking-widest uppercase bg-black/60 px-3 py-1.5 border border-white/10 backdrop-blur-sm">
-              REACTION TIME 0.009S // ELAPSED 2.048S
+            {/* Image Info Overlays */}
+            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 text-xs text-white/90 font-medium tracking-wide bg-black/75 px-3 py-1.5 rounded border border-white/10 backdrop-blur-md">
+              Reaction Time 0.009s &bull; Elapsed 2.048s
             </div>
-            <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 font-mono text-[10px] sm:text-xs text-[#FF4552] tracking-widest uppercase bg-black/70 px-3 py-1.5 border border-[#E62935]/40 backdrop-blur-sm">
-              TRAP SPEED 180 MPH // N2O BOOST
+            <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 text-xs text-white/90 font-medium tracking-wide bg-black/75 px-3 py-1.5 rounded border border-white/10 backdrop-blur-md">
+              Trap Speed 180 MPH &bull; N2O Boost
             </div>
           </div>
         </div>
@@ -62,9 +61,9 @@ export function GameIntroduction() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
           {/* Pillar 1 */}
           <div className="border-l-2 border-[#E62935] pl-6 sm:pl-8 space-y-3">
-            <div className="flex items-center gap-2 font-mono text-xs text-[#FF4552] tracking-widest uppercase">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#E62935]">
               <Gauge className="w-4 h-4" />
-              <span>01 // REACTION & PADDLE SHIFTING</span>
+              <span>01 &bull; Reaction &amp; Paddle Shifting</span>
             </div>
             <h3 className="font-display font-bold text-2xl uppercase tracking-wider text-[#F5F5F3]">
               MANUAL PADDLE SHIFTS & N2O
@@ -78,9 +77,9 @@ export function GameIntroduction() {
 
           {/* Pillar 2 */}
           <div className="border-l-2 border-white/20 pl-6 sm:pl-8 space-y-3">
-            <div className="flex items-center gap-2 font-mono text-xs text-[#A4A7AC] tracking-widest uppercase">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#A4A7AC]">
               <Flame className="w-4 h-4" />
-              <span>02 // HIGH STAKES PINK SLIPS</span>
+              <span>02 &bull; High Stakes Pink Slips</span>
             </div>
             <h3 className="font-display font-bold text-2xl uppercase tracking-wider text-[#F5F5F3]">
               CASH, CARS & REPUTATION
@@ -94,9 +93,9 @@ export function GameIntroduction() {
 
           {/* Pillar 3 */}
           <div className="border-l-2 border-white/20 pl-6 sm:pl-8 space-y-3">
-            <div className="flex items-center gap-2 font-mono text-xs text-[#A4A7AC] tracking-widest uppercase">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#A4A7AC]">
               <Trophy className="w-4 h-4" />
-              <span>03 // 3D GARAGE & CREW WARS</span>
+              <span>03 &bull; 3D Garage &amp; Crew Wars</span>
             </div>
             <h3 className="font-display font-bold text-2xl uppercase tracking-wider text-[#F5F5F3]">
               DYNO SPECS & CREW TOURNAMENTS

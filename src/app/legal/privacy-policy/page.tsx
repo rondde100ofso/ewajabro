@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
           and applicable global data privacy statutes, the Data Controller responsible for personal data processed
           through this Website and associated services is:
         </p>
-        <div className="p-4 bg-[#141619] border border-white/10 space-y-1 font-mono text-xs">
+        <div className="p-4 bg-[#141619] border border-white/10 space-y-1 text-xs text-[#A4A7AC]">
           <div><strong className="text-[#F5F5F3]">Entity:</strong> {siteConfig.legal.publisherLegalName}</div>
           <div><strong className="text-[#F5F5F3]">Jurisdiction:</strong> {siteConfig.legal.jurisdiction}</div>
           <div><strong className="text-[#F5F5F3]">Privacy Contact:</strong> {siteConfig.legal.privacyEmail}</div>
@@ -216,12 +216,12 @@ export default function PrivacyPolicyPage() {
           For privacy inquiries, data deletion requests, or questions regarding our compliance practices:
         </p>
         <div className="p-4 bg-[#141619] border border-white/10">
-          <p className="text-xs font-mono text-[#F5F5F3]">
+          <p className="text-xs text-[#F5F5F3]">
             {siteConfig.legal.publisherLegalName} &mdash; Data Protection Officer
           </p>
           <a
             href={`mailto:${siteConfig.legal.privacyEmail}`}
-            className="text-xs font-mono text-[#FF4552] hover:underline mt-1 inline-block"
+            className="text-xs text-[#E62935] hover:underline mt-1 inline-block"
           >
             {siteConfig.legal.privacyEmail}
           </a>

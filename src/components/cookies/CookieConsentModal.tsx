@@ -112,7 +112,7 @@ export function CookieConsentModal() {
                 <button
                   type="button"
                   onClick={() => setIsOpen(true)}
-                  className="text-xs font-mono text-[#A4A7AC] hover:text-[#F5F5F3] underline ml-1"
+                  className="text-xs font-medium text-[#A4A7AC] hover:text-[#F5F5F3] underline ml-1"
                 >
                   Preferences
                 </button>
@@ -161,7 +161,7 @@ export function CookieConsentModal() {
                     <span className="font-display font-bold text-sm uppercase text-[#F5F5F3]">
                       Strictly Necessary
                     </span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 bg-white/10 text-white rounded">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 bg-white/10 text-white rounded">
                       Always Active
                     </span>
                   </div>

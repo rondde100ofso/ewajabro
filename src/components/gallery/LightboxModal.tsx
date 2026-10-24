@@ -65,7 +65,7 @@ export function LightboxModal({
       <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 flex items-center justify-between z-20">
         <div className="flex items-center gap-3">
           <Badge variant="red">{currentItem.category}</Badge>
-          <span className="font-mono text-xs text-[#A4A7AC]">
+          <span className="text-xs font-medium text-[#A4A7AC]">
             {currentIndex + 1} / {items.length}
           </span>
         </div>

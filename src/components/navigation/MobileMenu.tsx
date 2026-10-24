@@ -106,13 +106,13 @@ export function MobileMenu({ isOpen, onClose, navLinks }: MobileMenuProps) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={onClose}
-              className="flex items-center justify-center gap-2.5 py-3 px-4 w-full text-xs font-mono tracking-wider uppercase text-[#A4A7AC] hover:text-[#F5F5F3] bg-[#141619] border border-white/10 rounded transition-colors"
+              className="flex items-center justify-center gap-2.5 py-3 px-4 w-full text-xs font-semibold tracking-wider uppercase text-[#A4A7AC] hover:text-[#F5F5F3] bg-[#141619] border border-white/10 rounded transition-colors"
             >
               <span>Official Discord Community</span>
             </a>
           )}
 
-          <div className="pt-4 flex items-center justify-center gap-6 text-xs text-[#A4A7AC]/60 font-mono">
+          <div className="pt-4 flex items-center justify-center gap-6 text-xs text-[#A4A7AC]/60">
             <Link href="/legal/terms-of-service" onClick={onClose} className="hover:text-white">
               Terms
             </Link>

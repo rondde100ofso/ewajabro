@@ -29,11 +29,11 @@ export function Footer() {
               {siteConfig.shortDescription}
             </p>
             <div className="pt-2 flex items-center gap-3">
-              <span className="text-xs font-mono uppercase tracking-wider text-[#FF4552]">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#E62935]">
                 STATUS: {siteConfig.releaseStatus.toUpperCase().replace('-', ' ')}
               </span>
               <span className="text-white/20">•</span>
-              <span className="text-xs font-mono uppercase tracking-wider text-[#A4A7AC]">
+              <span className="text-xs font-medium uppercase tracking-wider text-[#A4A7AC]">
                 {siteConfig.releaseDateText}
               </span>
             </div>
@@ -114,7 +114,7 @@ export function Footer() {
             <div>
               <a
                 href={`mailto:${siteConfig.support.email}`}
-                className="inline-flex items-center gap-2 text-sm font-mono text-[#F5F5F3] hover:text-[#E62935] transition-colors p-2 bg-[#141619] border border-white/10 w-full"
+                className="inline-flex items-center gap-2 text-xs font-medium text-[#F5F5F3] hover:text-[#E62935] transition-colors p-2 bg-[#141619] border border-white/10 w-full"
               >
                 <Mail className="w-4 h-4 text-[#E62935]" />
                 <span>{siteConfig.support.email}</span>
@@ -126,7 +126,7 @@ export function Footer() {
                   href={siteConfig.support.discordSupportChannel}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-mono text-[#A4A7AC] hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-medium text-[#A4A7AC] hover:text-white transition-colors"
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-[#5865F2]" />
                   <span>Discord Community Help Desk</span>
@@ -139,7 +139,7 @@ export function Footer() {
 
       {/* Bottom Bar: Copyright & Legal Policies */}
       <div className="border-t border-white/5 bg-[#08090B]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
           <div className="text-center md:text-left text-[#A4A7AC]/80 space-y-1">
             <div>
               &copy; {currentYear} {siteConfig.brandName}. All rights reserved. {siteConfig.legal.publisherLegalName}.

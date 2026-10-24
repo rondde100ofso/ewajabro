@@ -150,7 +150,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       <button
         onClick={completeIntro}
         type="button"
-        className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-10 z-30 px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-mono tracking-widest text-[#A4A7AC] hover:text-[#F5F5F3] hover:border-[#E62935] border border-white/10 rounded-none transition-all uppercase bg-black/60 backdrop-blur-md cursor-pointer"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-10 z-30 px-3 py-1.5 sm:px-4 sm:py-2 text-xs font-semibold tracking-wider text-[#A4A7AC] hover:text-white border border-white/10 hover:border-white/30 rounded transition-all uppercase bg-black/60 backdrop-blur-md cursor-pointer"
         aria-label="Skip drag racing staging intro"
       >
         Skip [ESC]
@@ -296,7 +296,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
           </div>
 
           {/* Telemetry Numbers */}
-          <div className="flex items-center justify-between w-full font-mono text-[11px] sm:text-xs">
+          <div className="flex items-center justify-between w-full text-[11px] sm:text-xs font-medium">
             <div className="flex items-center gap-1.5">
               <span className="text-[#A4A7AC]">RPM:</span>
               <span
@@ -304,7 +304,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
                   greenOn
                     ? 'text-[#00FF66]'
                     : yellow3On
-                    ? 'text-[#E62935] animate-pulse'
+                    ? 'text-[#E62935]'
                     : yellow1On
                     ? 'text-[#FFB800]'
                     : 'text-white'

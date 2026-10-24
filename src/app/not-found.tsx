@@ -5,9 +5,9 @@ import { siteConfig } from '@/config/site';
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[#08090B] text-[#F5F5F3] flex flex-col items-center justify-center p-6 text-center select-none">
-      <div className="font-mono text-xs text-[#FF4552] uppercase tracking-widest px-3 py-1 bg-[#E62935]/10 border border-[#E62935]/30 mb-6">
-        ERROR 404 // FALSE START
-      </div>
+      <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#E62935] mb-4">
+        ERROR 404 &bull; FALSE START
+      </p>
       <h1 className="font-display font-black text-6xl sm:text-8xl md:text-9xl tracking-tight leading-none text-[#F5F5F3] mb-4">
         OFF TRACK<span className="text-[#E62935]">.</span>
       </h1>

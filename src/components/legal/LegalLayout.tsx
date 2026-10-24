@@ -7,7 +7,6 @@ import { ArrowLeft, Printer, Mail, AlertTriangle, ShieldCheck } from 'lucide-rea
 import { siteConfig } from '@/config/site';
 import { Footer } from '@/components/footer/Footer';
 import { TableOfContents } from './TableOfContents';
-import { Badge } from '@/components/ui/Badge';
 
 interface LegalLayoutProps {
   title: string;
@@ -37,7 +36,7 @@ export function LegalLayout({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#A4A7AC] hover:text-[#E62935] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#A4A7AC] hover:text-[#E62935] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Rivals Reborn</span>
@@ -56,7 +55,7 @@ export function LegalLayout({
           <button
             onClick={handlePrint}
             type="button"
-            className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono tracking-wider uppercase text-[#A4A7AC] hover:text-white bg-[#141619] border border-white/10 rounded transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium tracking-wider uppercase text-[#A4A7AC] hover:text-white bg-[#141619] border border-white/10 rounded transition-colors"
             aria-label="Print document"
           >
             <Printer className="w-3.5 h-3.5" />
@@ -69,14 +68,14 @@ export function LegalLayout({
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full">
         {/* Document Header */}
         <div className="pb-8 border-b border-white/10 mb-10">
-          <Badge variant="red" className="mb-3">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E62935] mb-3">
             LEGAL DRAFT DOCUMENTATION
-          </Badge>
+          </p>
           <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight text-[#F5F5F3]">
             {title}
           </h1>
 
-          <div className="mt-4 flex flex-wrap items-center gap-4 text-xs font-mono text-[#A4A7AC]">
+          <div className="mt-4 flex flex-wrap items-center gap-4 text-xs font-medium text-[#A4A7AC]">
             <div>
               <span className="text-[#6B7078]">Effective:</span> {effectiveDate}
             </div>
@@ -109,7 +108,7 @@ export function LegalLayout({
 
             {/* Legal Support Box */}
             <div className="mt-6 p-5 bg-[#141619] border border-white/10 space-y-3">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#F5F5F3]">
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#F5F5F3]">
                 <ShieldCheck className="w-4 h-4 text-[#E62935]" />
                 <span>Legal Assistance</span>
               </div>
@@ -118,7 +117,7 @@ export function LegalLayout({
               </p>
               <a
                 href={`mailto:${siteConfig.legal.contactEmail}`}
-                className="inline-flex items-center gap-2 text-xs font-mono text-[#FF4552] hover:underline"
+                className="inline-flex items-center gap-2 text-xs font-medium text-[#E62935] hover:underline"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>{siteConfig.legal.contactEmail}</span>

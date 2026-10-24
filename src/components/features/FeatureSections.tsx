@@ -3,8 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { siteConfig } from '@/config/site';
-import { Badge } from '@/components/ui/Badge';
-import { ChevronRight } from 'lucide-react';
 
 export function FeatureSections() {
   const { features } = siteConfig;
@@ -18,9 +16,9 @@ export function FeatureSections() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 sm:mb-28">
-          <Badge variant="red" className="mb-4">
-            ENGINEERING & COMPETITION
-          </Badge>
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#E62935] mb-3">
+            ENGINEERING &amp; COMPETITION
+          </p>
           <h2 className="font-display font-black text-4xl sm:text-6xl uppercase tracking-tight text-[#F5F5F3]">
             BUILT FROM THE TIRES UP
           </h2>
@@ -58,9 +56,9 @@ export function FeatureSections() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#08090B]/60 via-transparent to-transparent pointer-events-none" />
 
-                      {/* Tactical HUD badge */}
-                      <div className="absolute top-4 left-4 font-mono text-[10px] tracking-widest uppercase bg-black/70 text-[#FF4552] border border-[#E62935]/40 px-2.5 py-1 backdrop-blur-sm">
-                        SYS // {feature.tag}
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4 text-xs font-semibold uppercase tracking-wider bg-black/75 backdrop-blur-md text-white/90 px-3 py-1 rounded border border-white/10">
+                        {feature.tag}
                       </div>
                     </div>
                   </div>
@@ -73,7 +71,7 @@ export function FeatureSections() {
                   }`}
                 >
                   <div className="space-y-2">
-                    <span className="text-xs font-mono tracking-widest text-[#FF4552] uppercase block">
+                    <span className="text-xs font-bold tracking-[0.2em] text-[#E62935] uppercase block">
                       {feature.tag}
                     </span>
                     <h3 className="font-display font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-[#F5F5F3] leading-[0.95]">
@@ -94,7 +92,7 @@ export function FeatureSections() {
                     <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
                       {feature.stats.map((stat, i) => (
                         <div key={i} className="bg-[#141619] p-3.5 border border-white/5">
-                          <span className="text-[10px] font-mono tracking-wider text-[#A4A7AC] uppercase block">
+                          <span className="text-[11px] text-[#A4A7AC] uppercase font-medium tracking-wider block">
                             {stat.label}
                           </span>
                           <span className="font-display font-bold text-base sm:text-lg text-[#F5F5F3] tracking-wide mt-0.5 block">

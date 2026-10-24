@@ -2,9 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Maximize2, Camera } from 'lucide-react';
+import { Maximize2, Camera, ArrowRight } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { Badge } from '@/components/ui/Badge';
 import { LightboxModal } from './LightboxModal';
 
 export function GameplayGallery() {
@@ -30,9 +29,9 @@ export function GameplayGallery() {
         {/* Section Header & Category Filters */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14 sm:mb-18">
           <div>
-            <Badge variant="red" className="mb-4">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#E62935] mb-3">
               VISUAL REEL
-            </Badge>
+            </p>
             <h2 className="font-display font-black text-4xl sm:text-6xl uppercase tracking-tight text-[#F5F5F3]">
               THE UNDERGROUND GALLERY
             </h2>
@@ -49,7 +48,7 @@ export function GameplayGallery() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 py-1.5 text-xs font-mono tracking-widest uppercase transition-all duration-200 border ${
+                  className={`px-4 py-1.5 text-xs font-semibold tracking-wider uppercase transition-all duration-200 rounded border ${
                     selectedCategory === cat
                       ? 'bg-[#E62935] text-white border-[#E62935] shadow-[0_0_15px_rgba(230,41,53,0.3)]'
                       : 'bg-[#141619] text-[#A4A7AC] border-white/10 hover:border-white/30 hover:text-white'
@@ -64,14 +63,13 @@ export function GameplayGallery() {
 
         {/* Gallery Content */}
         {!hasItems ? (
-          <div className="relative border border-white/10 bg-[#141619] p-8 sm:p-14 text-center flex flex-col items-center justify-center max-w-3xl mx-auto shadow-2xl">
-            <div className="w-14 h-14 bg-[#1D2024] border border-white/10 flex items-center justify-center text-[#E62935] mb-6">
-              <Camera className="w-7 h-7 text-[#FF4552]" />
+          <div className="relative border border-white/10 bg-[#141619] p-8 sm:p-14 text-center flex flex-col items-center justify-center max-w-2xl mx-auto shadow-2xl rounded-xl">
+            <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#E62935] mb-5">
+              <Camera className="w-6 h-6" />
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-mono uppercase tracking-widest text-[#FF4552] bg-[#E62935]/10 border border-[#E62935]/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E62935] animate-ping" />
-              <span>LIVE GAMEPLAY MEDIA</span>
-            </div>
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#E62935] mb-3">
+              Live Gameplay Media
+            </p>
             <h3 className="font-display font-black text-2xl sm:text-4xl uppercase tracking-tight text-[#F5F5F3] mb-3">
               IN GAME SCREENSHOTS INCOMING
             </h3>
@@ -83,9 +81,10 @@ export function GameplayGallery() {
                 href={siteConfig.socials.discord.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#E62935] hover:bg-[#FF4552] text-white font-display font-bold uppercase tracking-widest text-sm transition-all shadow-[0_0_20px_rgba(230,41,53,0.35)]"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#E62935] hover:bg-[#FF4552] text-white font-display font-bold uppercase tracking-widest text-sm transition-all shadow-[0_0_20px_rgba(230,41,53,0.35)] rounded"
               >
-                Join Discord for Previews
+                <span>Join Discord for Previews</span>
+                <ArrowRight className="w-4 h-4" />
               </a>
             )}
           </div>
@@ -113,8 +112,8 @@ export function GameplayGallery() {
 
                     {/* Top Category Badge */}
                     <div className="absolute top-3 left-3">
-                      <span className="text-[10px] font-mono tracking-widest uppercase bg-black/70 text-[#FF4552] px-2.5 py-1 border border-[#E62935]/40 backdrop-blur-sm">
-                        IN GAME // {item.category}
+                      <span className="text-xs font-semibold uppercase tracking-wider bg-black/75 backdrop-blur-md text-white/90 px-2.5 py-1 rounded border border-white/10">
+                        {item.category}
                       </span>
                     </div>
 

@@ -100,7 +100,7 @@ export function HeroSection() {
             type="button"
             onClick={toggleSound}
             aria-label={isMuted ? 'Unmute hero background video' : 'Mute hero background video'}
-            className="absolute bottom-4 right-4 sm:bottom-10 sm:right-10 z-20 flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#A4A7AC] hover:text-[#F5F5F3] bg-black/70 hover:bg-[#E62935]/20 border border-white/10 hover:border-[#E62935] rounded-none backdrop-blur-sm transition-all"
+            className="absolute bottom-4 right-4 sm:bottom-10 sm:right-10 z-20 flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-xs font-semibold uppercase tracking-wider text-[#A4A7AC] hover:text-white bg-black/75 hover:bg-black/90 border border-white/10 hover:border-white/20 rounded backdrop-blur-md transition-all"
           >
             {isMuted ? (
               <>
@@ -109,8 +109,8 @@ export function HeroSection() {
               </>
             ) : (
               <>
-                <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FF4552] animate-pulse" />
-                <span className="text-[#FF4552] hidden sm:inline">Audio On</span>
+                <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E62935]" />
+                <span className="text-[#E62935] hidden sm:inline">Audio On</span>
               </>
             )}
           </button>
@@ -119,10 +119,9 @@ export function HeroSection() {
         {/* Hero Foreground Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-40 sm:pb-32 flex flex-col items-center text-center">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 sm:mb-6 text-[11px] sm:text-sm font-mono tracking-widest text-[#FF4552] uppercase bg-[#E62935]/10 border border-[#E62935]/30 rounded-none shadow-[0_0_15px_rgba(230,41,53,0.2)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E62935] animate-ping" />
-            <span>{siteConfig.tagline}</span>
-          </div>
+          <p className="font-display font-bold uppercase text-xs sm:text-sm tracking-[0.25em] text-[#E62935] mb-4 sm:mb-6">
+            {siteConfig.tagline}
+          </p>
 
           {/* Main Heading */}
           <h1 className="font-display font-extrabold uppercase text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-[0.9] sm:leading-[0.88] text-[#F5F5F3] drop-shadow-2xl max-w-5xl">
@@ -176,15 +175,14 @@ export function HeroSection() {
           </div>
 
           {/* Target Platform Metadata Pill */}
-          <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-[10px] sm:text-xs font-mono tracking-wider sm:tracking-widest uppercase text-center px-2">
-            <span className="text-[#FF4552] font-semibold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E62935] animate-ping" />
+          <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider text-center px-2">
+            <span className="text-[#E62935]">
               Closed Invite Only Alpha Active
             </span>
             <span className="text-white/20 hidden sm:inline">•</span>
-            <span className="text-[#A4A7AC]">Pre Registration & Beta Soon</span>
+            <span className="text-[#A4A7AC]">Pre Registration &amp; Beta Soon</span>
             <span className="text-white/20 hidden sm:inline">•</span>
-            <span className="text-[#F5F5F3]">iOS & Android</span>
+            <span className="text-[#F5F5F3]">iOS &amp; Android</span>
           </div>
         </div>
 
@@ -194,7 +192,7 @@ export function HeroSection() {
           aria-label="Scroll down to game introduction"
           className="hidden sm:flex absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2 text-[#A4A7AC]/60 hover:text-[#E62935] transition-colors group cursor-pointer"
         >
-          <span className="text-[10px] font-mono uppercase tracking-widest group-hover:text-[#F5F5F3] transition-colors">
+          <span className="text-[10px] font-semibold uppercase tracking-widest group-hover:text-[#F5F5F3] transition-colors">
             SCROLL
           </span>
           <div className="w-5 h-9 border border-white/20 rounded-full flex justify-center p-1 group-hover:border-[#E62935] transition-colors">
@@ -213,7 +211,7 @@ export function HeroSection() {
         >
           {/* Top Bar */}
           <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 flex items-center justify-between z-20">
-            <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-widest text-[#F5F5F3]">
+            <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-[#F5F5F3]">
               <Film className="w-4 h-4 text-[#E62935]" />
               <span>Official Cinematic Teaser &bull; 49s</span>
             </div>

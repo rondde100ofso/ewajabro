@@ -115,7 +115,7 @@ export function HeroSection() {
                   setIsPlaying(true);
                 }
               }}
-              className={`absolute inset-0 w-full h-full object-cover filter brightness-[0.78] contrast-[1.12] transition-opacity duration-1000 ${
+              className={`absolute inset-0 w-full h-full object-contain object-center filter brightness-[0.88] contrast-[1.08] transition-opacity duration-1000 ${
                 videoLoaded && isPlaying ? 'opacity-100' : 'opacity-0'
               }`}
             />

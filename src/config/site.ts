@@ -293,5 +293,15 @@ export const siteConfig: SiteConfig = {
       caption: 'Silky smooth satin purple sheen on a widebody drag coupe with custom side exhaust ports.',
       isRealGameplay: true,
     },
+    {
+      id: 'gallery-pink-slips',
+      title: 'High Stakes Pink Slip Lobby',
+      category: 'Multiplayer',
+      orientation: 'landscape',
+      src: '/images/gameplay-wager.png',
+      alt: 'Live challenge lobby showing pink slip and cash wagering options against rival racers',
+      caption: 'Live head-to-head challenge lobby with real-time cash wagers and pink slip stakes.',
+      isRealGameplay: true,
+    },
   ],
 };

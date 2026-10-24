@@ -10,7 +10,7 @@ export function GameplayGallery() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const categories = ['All', 'Garage', 'Tuning', 'Drag Racing', 'Customization'];
+  const categories = ['All', 'Garage', 'Tuning', 'Drag Racing', 'Customization', 'Multiplayer'];
 
   const filteredItems =
     selectedCategory === 'All'

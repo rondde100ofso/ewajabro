@@ -36,23 +36,23 @@ export function GameIntroduction() {
         </div>
 
         {/* Hero Editorial Composition */}
-        <div className="relative border border-white/10 bg-[#141619] p-3 sm:p-5 mb-16 sm:mb-24">
-          <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden">
+        <div className="relative border border-white/10 bg-[#141619] p-2 sm:p-4 mb-16 sm:mb-24 overflow-hidden">
+          <div
+            className="relative w-full overflow-hidden bg-black"
+            style={{ aspectRatio: '1024 / 470' }}
+          >
             <Image
-              src={siteConfig.assets.heroPoster}
-              alt="Drag racing staging line under floodlights"
+              src="/images/gameplay-wager.png"
+              alt="Live high stakes multiplayer lobby with pink slip wagering"
               fill
               sizes="(max-width: 1280px) 100vw, 1200px"
-              className="object-cover object-center filter brightness-[0.85] contrast-[1.1]"
+              className="object-cover object-center filter brightness-[0.95] contrast-[1.05]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#08090B]/60 via-transparent to-transparent pointer-events-none" />
 
-            {/* Image Info Overlays */}
-            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 text-xs text-white/90 font-medium tracking-wide bg-black/75 px-3 py-1.5 rounded border border-white/10 backdrop-blur-md">
-              Reaction Time 0.009s &bull; Elapsed 2.048s
-            </div>
-            <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 text-xs text-white/90 font-medium tracking-wide bg-black/75 px-3 py-1.5 rounded border border-white/10 backdrop-blur-md">
-              Trap Speed 180 MPH &bull; N2O Boost
+            {/* In-Game Mode Badge */}
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 text-xs font-semibold uppercase tracking-wider bg-black/80 backdrop-blur-md text-white/90 px-3 py-1.5 rounded border border-white/10 shadow-lg">
+              Live Challenge Lobby &bull; Pink Slip Wagers
             </div>
           </div>
         </div>

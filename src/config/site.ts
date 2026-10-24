@@ -159,7 +159,7 @@ export const siteConfig: SiteConfig = {
       title: 'AUTO TUNING & TUNE BOOK',
       subtitle: 'Dial in the winning setup automatically, or calibrate and save custom profiles to your Tune Book.',
       description:
-        'Take the guesswork out of calibration with Auto Tune, or dial in your build manually across engine, turbo, and nitrous pro tiers. Save your winning configurations directly into your Tune Book with custom profile names, allowing you to instantly load tailored setups for 1/4 mile, 1/8 mile, or rival showdowns with zero downtime.',
+        'Take the guesswork out of calibration with Auto Tune, or dial in your build manually across engine, turbo, and nitrous pro tiers. Save your winning configurations directly into your Tune Book with custom profile names, allowing you to instantly load tailored setups for your race with zero downtime.',
       imageSrc: '/images/feature-tuning.png',
       imageAlt: 'Rivals Reborn Tune Bench showing auto tuning, pro parts calibration, and saved tune book',
       aspectRatio: '1024 / 470',

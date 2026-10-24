@@ -17,21 +17,24 @@ function PaintFinishesShowcase({
 
   return (
     <div className="relative border border-white/10 bg-[#141619] p-2 sm:p-3 overflow-hidden">
-      {/* Main Spotlight Preview */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+      {/* Main Spotlight Preview (Matches native wide aspect ratio so whole car is uncropped) */}
+      <div
+        className="relative w-full overflow-hidden bg-[#0A0C0E] border border-white/5"
+        style={{ aspectRatio: '1024 / 424' }}
+      >
         <Image
           key={activeFinish.id}
           src={activeFinish.imageSrc}
           alt={activeFinish.imageAlt}
           fill
           sizes="(max-width: 1024px) 100vw, 680px"
-          className="object-cover object-center filter brightness-[0.92] contrast-[1.05] transition-opacity duration-300"
+          className="object-contain object-center filter brightness-[0.96] contrast-[1.04] transition-opacity duration-300"
           priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#08090B]/60 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#08090B]/40 via-transparent to-transparent pointer-events-none" />
 
         {/* Category Badge */}
-        <div className="absolute top-4 left-4 text-xs font-semibold uppercase tracking-wider bg-black/75 backdrop-blur-md text-white/90 px-3 py-1 rounded border border-white/10">
+        <div className="absolute top-3 left-3 sm:top-4 sm:left-4 text-xs font-semibold uppercase tracking-wider bg-black/75 backdrop-blur-md text-white/90 px-3 py-1 rounded border border-white/10">
           {tag}
         </div>
 
@@ -61,13 +64,16 @@ function PaintFinishesShowcase({
               aria-label={`Show ${finish.label} paint finish`}
               aria-pressed={isSelected}
             >
-              <div className="relative aspect-[2.4/1] w-full overflow-hidden bg-black mb-1.5 border border-white/5">
+              <div
+                className="relative w-full overflow-hidden bg-black mb-1.5 border border-white/5"
+                style={{ aspectRatio: '1024 / 424' }}
+              >
                 <Image
                   src={finish.imageSrc}
                   alt={finish.label}
                   fill
                   sizes="(max-width: 1024px) 33vw, 220px"
-                  className="object-cover object-center group-hover/finish:scale-105 transition-transform duration-300"
+                  className="object-contain object-center group-hover/finish:scale-105 transition-transform duration-300"
                 />
               </div>
 

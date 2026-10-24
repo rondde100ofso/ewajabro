@@ -4,7 +4,7 @@ export const siteConfig: SiteConfig = {
   brandName: 'Rivals Reborn',
   tagline: 'Pure Reaction. Real Stakes.',
   shortDescription:
-    'Build your garage, dial in your tune, and put your ride on the line. True manual drag racing built for raw reaction and high stakes rivalries.',
+    'Build your garage, tune your vehicle correctly, and put your ride on the line. True manual drag racing built for raw reaction and high stakes rivalries.',
   longDescription:
     'Rivals Reborn brings authentic, skill based quarter mile drag racing to iOS and Android. Built on a dedicated physics engine with precise launch windows, true manual shifting, deep performance tuning, visual personalization, and high stakes pink slip racing.',
   domain: 'rivalsrebornofficial.com',
@@ -157,9 +157,9 @@ export const siteConfig: SiteConfig = {
       id: 'tuning',
       tag: 'PRECISION ENGINEERING',
       title: 'SURGICAL PERFORMANCE TUNING',
-      subtitle: "Microsecond shifts, and millisecond reaction times won't help if your car isn't dialed in.",
+      subtitle: "Microsecond shifts and millisecond reaction times won't help if your vehicle isn't tuned correctly.",
       description:
-        'Dial in grip, power, suspension, NOS levels, and the correct pro tier per part, to find the best tune to beat your rivals. The physics engine is accurate to the thousandth RPM window, rewarding those who understand the balance between launch traction, power to weight ratio, and top end trap speed.',
+        'Tune your grip, power, suspension, NOS levels, and the correct pro tier per part, to find the best setup to beat your rivals. The physics engine is accurate to the thousandth RPM window, rewarding those who understand the balance between launch traction, power to weight ratio, and top end trap speed.',
       imageSrc: '/images/feature-tuning.jpg',
       imageAlt: 'Precision engine bay performance calibration and forced induction setup',
       stats: [

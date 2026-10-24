@@ -135,7 +135,7 @@ export function HeroSection() {
 
           {/* Supporting Text */}
           <p className="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl text-[#A4A7AC] max-w-2xl font-normal leading-relaxed text-balance px-2 sm:px-0">
-            Build your garage. Dial your tune. Stage your car. Make every millisecond count.
+            Build your garage. Tune your vehicle correctly. Stage your car. Make every millisecond count.
           </p>
 
           {/* Action CTAs */}

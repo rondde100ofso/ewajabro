@@ -33,7 +33,7 @@ export interface FeatureItem {
   id: string;
   tag: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   description: string;
   imageSrc: string;
   imageAlt: string;

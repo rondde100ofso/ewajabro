@@ -143,7 +143,6 @@ export const siteConfig: SiteConfig = {
       id: 'garage',
       tag: 'COLLECTION & CLASSICS',
       title: 'TUNE, COMPETE, COLLECT',
-      subtitle: 'From grassroots project cars to elite tuned track bred monsters.',
       description:
         'Buy, upgrade, and win distinguished racing machines to dominate the strip. Every vehicle in your garage carries distinct power to weight ratios, drivetrain dynamics, and upgrade paths designed for raw quarter mile dominance and pushing to your absolute limits.',
       imageSrc: '/images/feature-garage.jpg',

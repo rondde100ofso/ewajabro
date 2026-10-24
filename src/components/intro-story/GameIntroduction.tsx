@@ -69,9 +69,9 @@ export function GameIntroduction() {
               MANUAL PADDLE SHIFTS & N2O
             </h3>
             <p className="text-sm text-[#A4A7AC] leading-relaxed">
-              Every millisecond counts. Drop your launch on the green light, pull manual paddle shifts right on
-              the shift light window, and time your nitrous boost down the strip. Miss your shift window and you
-              get hit with a late shift that costs you the race.
+              Every millisecond counts. Drop your launch on the green light, hit your NOS at launch, and pull
+              manual paddle shifts right on the shift light window. Miss your shift window and you get hit
+              with a late shift that costs you the race.
             </p>
           </div>
 

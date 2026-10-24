@@ -79,9 +79,11 @@ export function FeatureSections() {
                     </h3>
                   </div>
 
-                  <p className="font-display text-lg sm:text-xl text-[#F5F5F3]/90 font-semibold tracking-wide">
-                    {feature.subtitle}
-                  </p>
+                  {feature.subtitle && (
+                    <p className="font-display text-lg sm:text-xl text-[#F5F5F3]/90 font-semibold tracking-wide">
+                      {feature.subtitle}
+                    </p>
+                  )}
 
                   <p className="text-sm sm:text-base text-[#A4A7AC] leading-relaxed">
                     {feature.description}

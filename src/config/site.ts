@@ -223,8 +223,9 @@ export const siteConfig: SiteConfig = {
       subtitle: 'Put your cash, your car, and your pride on the line.',
       description:
         'Form racing crews with trusted drivers, coordinate builds across every class, and battle for leaderboard dominance in live head to head showdowns. Back up your tune in authentic pink slip races where the winner takes the keys, no safety nets, no second chances.',
-      imageSrc: '/images/feature-rivals.jpg',
-      imageAlt: 'Two drag racers staging for a high stakes pink slip showdown',
+      imageSrc: '/images/feature-rivals.png',
+      imageAlt: 'Rivals Reborn Tokyo city map showcasing Turf Wars, Tournaments, and Multiplayer events',
+      aspectRatio: '16 / 9',
       stats: [
         { label: 'High Stakes', value: 'Pink Slips & Bets' },
         { label: 'Competition', value: 'Live 1v1 & Crew Turf' },
@@ -301,6 +302,16 @@ export const siteConfig: SiteConfig = {
       src: '/images/gameplay-wager.png',
       alt: 'Live challenge lobby showing pink slip and cash wagering options against rival racers',
       caption: 'Live head-to-head challenge lobby with real-time cash wagers and pink slip stakes.',
+      isRealGameplay: true,
+    },
+    {
+      id: 'gallery-turf-wars',
+      title: 'Tokyo Turf Wars & Event Map',
+      category: 'Multiplayer',
+      orientation: 'landscape',
+      src: '/images/feature-rivals.png',
+      alt: 'Tokyo city world map showcasing live Turf Wars, Tournaments, Showdowns, and Trading',
+      caption: 'Live interactive world map featuring weekly Turf Wars, team rankings, tournaments, and black market events.',
       isRealGameplay: true,
     },
   ],

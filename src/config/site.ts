@@ -187,8 +187,8 @@ export const siteConfig: SiteConfig = {
       subtitle: 'No steering assist. Raw timing, skill based perfect launching, and grip loss.',
       description:
         "Rev your engine to the limiter then drop at the right timing, or rev launch from 0 RPM's either choice, launch at the top of the window, and show off your skill with lightning fast and manual paddle shifting without slamming the limiter.",
-      imageSrc: '/images/feature-racing.jpg',
-      imageAlt: 'Two drag racing cars side by side at the Christmas tree staging line at night',
+      imageSrc: '/images/feature-racing.png',
+      imageAlt: 'Manual paddle shifting, launch gauge, and RPM tachometer HUD in Rivals Reborn',
       stats: [
         { label: 'Distance', value: '1/4 & 1/8 Mile' },
         { label: 'Timing', value: 'Millisecond Precision' },

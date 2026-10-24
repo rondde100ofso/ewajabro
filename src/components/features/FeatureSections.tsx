@@ -145,13 +145,16 @@ export function FeatureSections() {
                     />
                   ) : (
                     <div className="relative group border border-white/10 bg-[#141619] p-2 sm:p-3 overflow-hidden">
-                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                      <div
+                        className="relative w-full overflow-hidden bg-black"
+                        style={{ aspectRatio: feature.aspectRatio || '16 / 10' }}
+                      >
                         <Image
                           src={feature.imageSrc}
                           alt={feature.imageAlt}
                           fill
                           sizes="(max-width: 1024px) 100vw, 680px"
-                          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-[0.88] contrast-[1.08]"
+                          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-[0.95] contrast-[1.05]"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#08090B]/60 via-transparent to-transparent pointer-events-none" />
 

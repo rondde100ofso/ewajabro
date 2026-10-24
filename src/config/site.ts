@@ -154,16 +154,17 @@ export const siteConfig: SiteConfig = {
     },
     {
       id: 'tuning',
-      tag: 'PRECISION ENGINEERING',
-      title: 'SURGICAL PERFORMANCE TUNING',
-      subtitle: "Microsecond shifts and millisecond reaction times won't help if your vehicle isn't tuned correctly.",
+      tag: 'PRECISION CALIBRATION',
+      title: 'AUTO TUNING & TUNE BOOK',
+      subtitle: 'Dial in the winning setup automatically, or calibrate and save custom profiles to your Tune Book.',
       description:
-        'Tune your grip, power, suspension, NOS levels, and the correct pro tier per part, to find the best setup to beat your rivals. The physics engine is accurate to the thousandth RPM window, rewarding those who understand the balance between launch traction, power to weight ratio, and top end trap speed.',
-      imageSrc: '/images/feature-tuning.jpg',
-      imageAlt: 'Precision engine bay performance calibration and forced induction setup',
+        'Take the guesswork out of calibration with Auto Tune, or dial in your build manually across engine, turbo, and nitrous pro tiers. Save your winning configurations directly into your Tune Book with custom profile names, allowing you to instantly load tailored setups for 1/4 mile, 1/8 mile, or rival showdowns with zero downtime.',
+      imageSrc: '/images/feature-tuning.png',
+      imageAlt: 'Rivals Reborn Tune Bench showing auto tuning, pro parts calibration, and saved tune book',
+      aspectRatio: '1024 / 470',
       stats: [
-        { label: 'Gearbox', value: 'Individual Ratio Adjust' },
-        { label: 'Forced Induction', value: 'Turbo & Supercharger' },
+        { label: 'Auto Tune', value: 'Instant Dyno Calibration' },
+        { label: 'Tune Book', value: 'Save & Load Profiles' },
       ],
     },
     {

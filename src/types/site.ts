@@ -44,6 +44,7 @@ export interface FeatureItem {
   description: string;
   imageSrc: string;
   imageAlt: string;
+  aspectRatio?: string;
   stats?: { label: string; value: string }[];
   paintFinishes?: PaintFinish[];
 }

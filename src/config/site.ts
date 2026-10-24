@@ -149,7 +149,7 @@ export const siteConfig: SiteConfig = {
       imageAlt: 'High performance tuning garage featuring customized drag vehicles',
       stats: [
         { label: 'Drivetrains', value: 'RWD / AWD / FWD' },
-        { label: 'Classes', value: 'D to Unlimited' },
+        { label: 'Classes', value: 'D to R3' },
       ],
     },
     {

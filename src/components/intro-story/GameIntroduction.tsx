@@ -98,10 +98,10 @@ export function GameIntroduction() {
               <span>03 &bull; 3D Garage &amp; Crew Wars</span>
             </div>
             <h3 className="font-display font-bold text-2xl uppercase tracking-wider text-[#F5F5F3]">
-              DYNO SPECS & CREW TOURNAMENTS
+              CAR SPECS & CREW TOURNAMENTS
             </h3>
             <p className="text-sm text-[#A4A7AC] leading-relaxed">
-              Manage your fleet with real dyno metrics: power, weight, grip, and shift speed. Perform maintenance,
+              Manage your fleet with in-depth performance metrics: power, weight, grip, and shift speed. Perform maintenance,
               unlock crate R&amp;D upgrades, customize aero and widebody kits, and dominate weekly crew turf events.
             </p>
           </div>

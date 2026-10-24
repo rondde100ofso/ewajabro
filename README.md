@@ -1,6 +1,6 @@
 # Rivals Reborn — Official Game Website
 
-The official, production-ready website for **Rivals Reborn**, a competitive mobile drag-racing game built from the ground up with custom physics, deep dyno tuning, and live high-stakes multiplayer, targeting iOS and Android.
+The official, production-ready website for **Rivals Reborn**, a competitive mobile drag-racing game built from the ground up with custom physics, surgical performance tuning, and live high-stakes multiplayer, targeting iOS and Android.
 
 ---
 
@@ -42,7 +42,7 @@ RivalsReborn/
 │   │   ├── hero-poster.jpg         # Hero background poster (16:9)
 │   │   ├── og-image.jpg            # Social OpenGraph sharing card
 │   │   ├── feature-garage.jpg      # Garage & collection feature art
-│   │   ├── feature-tuning.jpg      # Dyno tuning & engine bay feature art
+│   │   ├── feature-tuning.jpg      # Performance tuning & engine bay feature art
 │   │   ├── feature-customization.jpg # Styling & aero customization art
 │   │   ├── feature-racing.jpg      # Competitive launch action art
 │   │   ├── feature-rivals.jpg      # Midnight crew staging art

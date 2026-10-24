@@ -74,7 +74,7 @@ export function GameplayGallery() {
               IN GAME SCREENSHOTS INCOMING
             </h3>
             <p className="text-sm sm:text-base text-[#A4A7AC] max-w-lg leading-relaxed mb-8">
-              Check back as we update the gallery with in game race captures, dyno tuning showcases, and garage builds. In the meantime, join our Discord for development previews and car reveals.
+              Check back as we update the gallery with in game race captures, performance tuning showcases, and garage builds. In the meantime, join our Discord for development previews and car reveals.
             </p>
             {siteConfig.socials.discord?.url && (
               <a

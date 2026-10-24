@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     'iOS drag racing',
     'Android racing game',
     'car tuning',
-    'dyno tuning',
+    'performance tuning',
     'bracket racing',
     'quarter mile racing',
     'pink slip racing',

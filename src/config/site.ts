@@ -173,11 +173,31 @@ export const siteConfig: SiteConfig = {
       subtitle: 'Make your vehicle unmistakably yours before the lights drop.',
       description:
         'Express your street identity with custom gem parts per car, wheel and rim sizing, special carbon fiber and glow rims, and multi stage pearlescent, satin, matte, and flake paint finishes. Your rival will see your taillights, make sure they remember you.',
-      imageSrc: '/images/feature-customization.jpg',
-      imageAlt: 'Customized drag car visual customization and aerodynamic styling',
+      imageSrc: '/images/finishes/finish-matte.png',
+      imageAlt: 'Custom drag racing car showcasing matte, metallic, and satin paint finishes',
       stats: [
         { label: 'Finishes', value: 'Matte, Satin, Metallic' },
         { label: 'Aero', value: 'Full Drag Kits & Spoilers' },
+      ],
+      paintFinishes: [
+        {
+          id: 'matte',
+          label: 'Matte',
+          imageSrc: '/images/finishes/finish-matte.png',
+          imageAlt: 'Matte blue finish on high performance track hatchback',
+        },
+        {
+          id: 'metallic',
+          label: 'Metallic',
+          imageSrc: '/images/finishes/finish-metallic.png',
+          imageAlt: 'Metallic copper finish on custom drag GT vehicle',
+        },
+        {
+          id: 'satin',
+          label: 'Satin',
+          imageSrc: '/images/finishes/finish-satin.png',
+          imageAlt: 'Satin purple finish on widebody drag coupe',
+        },
       ],
     },
     {

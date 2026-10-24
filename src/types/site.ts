@@ -29,6 +29,13 @@ export interface GalleryItem {
   isRealGameplay: boolean;
 }
 
+export interface PaintFinish {
+  id: string;
+  label: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
 export interface FeatureItem {
   id: string;
   tag: string;
@@ -38,6 +45,7 @@ export interface FeatureItem {
   imageSrc: string;
   imageAlt: string;
   stats?: { label: string; value: string }[];
+  paintFinishes?: PaintFinish[];
 }
 
 export interface LegalDocumentMetadata {

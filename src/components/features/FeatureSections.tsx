@@ -3,6 +3,99 @@
 import React from 'react';
 import Image from 'next/image';
 import { siteConfig } from '@/config/site';
+import { PaintFinish } from '@/types/site';
+
+function PaintFinishesShowcase({
+  tag,
+  paintFinishes,
+}: {
+  tag: string;
+  paintFinishes: PaintFinish[];
+}) {
+  const [activeIdx, setActiveIdx] = React.useState(0);
+  const activeFinish = paintFinishes[activeIdx] || paintFinishes[0];
+
+  return (
+    <div className="relative border border-white/10 bg-[#141619] p-2 sm:p-3 overflow-hidden">
+      {/* Main Spotlight Preview */}
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+        <Image
+          key={activeFinish.id}
+          src={activeFinish.imageSrc}
+          alt={activeFinish.imageAlt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 680px"
+          className="object-cover object-center filter brightness-[0.92] contrast-[1.05] transition-opacity duration-300"
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#08090B]/60 via-transparent to-transparent pointer-events-none" />
+
+        {/* Category Badge */}
+        <div className="absolute top-4 left-4 text-xs font-semibold uppercase tracking-wider bg-black/75 backdrop-blur-md text-white/90 px-3 py-1 rounded border border-white/10">
+          {tag}
+        </div>
+
+        {/* Active Finish Identifier overlay in bottom right */}
+        <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 flex items-center gap-2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded border border-white/15 shadow-lg">
+          <span className="w-2 h-2 rounded-full bg-[#E62935]" />
+          <span className="text-xs font-bold uppercase tracking-wider text-white">
+            {activeFinish.label} Finish
+          </span>
+        </div>
+      </div>
+
+      {/* 3 Paint Finish Selector Thumbnails */}
+      <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-2 sm:mt-3">
+        {paintFinishes.map((finish, idx) => {
+          const isSelected = activeIdx === idx;
+          return (
+            <button
+              key={finish.id}
+              type="button"
+              onClick={() => setActiveIdx(idx)}
+              className={`relative text-left p-1.5 sm:p-2 border transition-all duration-200 group/finish cursor-pointer ${
+                isSelected
+                  ? 'border-[#E62935] bg-[#1a1d22]'
+                  : 'border-white/10 bg-[#0d0e11] hover:border-white/25 hover:bg-[#141619]'
+              }`}
+              aria-label={`Show ${finish.label} paint finish`}
+              aria-pressed={isSelected}
+            >
+              <div className="relative aspect-[2.4/1] w-full overflow-hidden bg-black mb-1.5 border border-white/5">
+                <Image
+                  src={finish.imageSrc}
+                  alt={finish.label}
+                  fill
+                  sizes="(max-width: 1024px) 33vw, 220px"
+                  className="object-cover object-center group-hover/finish:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span
+                  className={`text-xs font-bold uppercase tracking-wider transition-colors ${
+                    isSelected ? 'text-[#F5F5F3]' : 'text-[#A4A7AC] group-hover/finish:text-white'
+                  }`}
+                >
+                  {finish.label}
+                </span>
+                <span
+                  className={`text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded transition-colors ${
+                    isSelected
+                      ? 'bg-[#E62935] text-white'
+                      : 'text-[#A4A7AC]/60 group-hover/finish:text-[#A4A7AC]'
+                  }`}
+                >
+                  {isSelected ? 'Active' : 'Preview'}
+                </span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export function FeatureSections() {
   const { features } = siteConfig;
@@ -45,23 +138,30 @@ export function FeatureSections() {
                     isReversed ? 'lg:order-2' : 'lg:order-1'
                   }`}
                 >
-                  <div className="relative group border border-white/10 bg-[#141619] p-2 sm:p-3 overflow-hidden">
-                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
-                      <Image
-                        src={feature.imageSrc}
-                        alt={feature.imageAlt}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 680px"
-                        className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-[0.88] contrast-[1.08]"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#08090B]/60 via-transparent to-transparent pointer-events-none" />
+                  {feature.paintFinishes && feature.paintFinishes.length > 0 ? (
+                    <PaintFinishesShowcase
+                      tag={feature.tag}
+                      paintFinishes={feature.paintFinishes}
+                    />
+                  ) : (
+                    <div className="relative group border border-white/10 bg-[#141619] p-2 sm:p-3 overflow-hidden">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                        <Image
+                          src={feature.imageSrc}
+                          alt={feature.imageAlt}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 680px"
+                          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-[0.88] contrast-[1.08]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#08090B]/60 via-transparent to-transparent pointer-events-none" />
 
-                      {/* Category Badge */}
-                      <div className="absolute top-4 left-4 text-xs font-semibold uppercase tracking-wider bg-black/75 backdrop-blur-md text-white/90 px-3 py-1 rounded border border-white/10">
-                        {feature.tag}
+                        {/* Category Badge */}
+                        <div className="absolute top-4 left-4 text-xs font-semibold uppercase tracking-wider bg-black/75 backdrop-blur-md text-white/90 px-3 py-1 rounded border border-white/10">
+                          {feature.tag}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Content Column */}

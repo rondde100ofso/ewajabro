@@ -61,11 +61,10 @@ export function HeroSection() {
           <div className="relative w-full h-full">
             <Image
               src={siteConfig.assets.heroPoster}
-              alt="Rivals Reborn high-stakes street drag racing machines at starting line"
+              alt="Rivals Reborn high stakes drag racing machines at starting line"
               fill
               priority
               sizes="100vw"
-              quality={90}
               className="object-cover object-center filter brightness-[0.78] contrast-[1.12]"
             />
           </div>
@@ -137,7 +136,7 @@ export function HeroSection() {
 
           {/* Supporting Text */}
           <p className="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl text-[#A4A7AC] max-w-2xl font-normal leading-relaxed text-balance px-2 sm:px-0">
-            Build your garage. Tune your ride. Challenge your rivals. Make every race count.
+            Build your garage. Dial your tune. Stage your car. Make every millisecond count.
           </p>
 
           {/* Action CTAs */}
@@ -180,10 +179,10 @@ export function HeroSection() {
           <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-[10px] sm:text-xs font-mono tracking-wider sm:tracking-widest uppercase text-center px-2">
             <span className="text-[#FF4552] font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E62935] animate-ping" />
-              Closed Invite-Only Alpha Active
+              Closed Invite Only Alpha Active
             </span>
             <span className="text-white/20 hidden sm:inline">•</span>
-            <span className="text-[#A4A7AC]">Pre-Registration & Beta Soon</span>
+            <span className="text-[#A4A7AC]">Pre Registration & Beta Soon</span>
             <span className="text-white/20 hidden sm:inline">•</span>
             <span className="text-[#F5F5F3]">iOS & Android</span>
           </div>

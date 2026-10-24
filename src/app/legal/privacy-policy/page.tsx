@@ -62,7 +62,7 @@ export default function PrivacyPolicyPage() {
               A. Information Provided Voluntarily
             </h4>
             <p className="mt-1 text-xs text-[#A4A7AC]">
-              When you contact us via email, submit a support ticket, or sign up for pre-registration notifications,
+              When you contact us via email, submit a support ticket, or sign up for pre registration notifications,
               we process your email address, handle, and message details to respond to your inquiry.
             </p>
           </div>

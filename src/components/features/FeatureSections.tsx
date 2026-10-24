@@ -25,7 +25,7 @@ export function FeatureSections() {
             BUILT FROM THE TIRES UP
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#A4A7AC]">
-            Every aspect of Rivals Reborn is meant to test your skills, and deliver an authentic drag racing experience. Combined with real physics, grip, and launch values, to test your skills and build your garage from the ground up. No gimmicks, Just you, and your skills on the line for bragging rights.
+            Every aspect of Rivals Reborn is meant to test your skills, and deliver an authentic drag racing experience. Combined with real physics, grip, and launch values, to test your skills and build your garage from the ground up. No gimmicks. Just you, and your skills on the line for bragging rights.
           </p>
         </div>
 

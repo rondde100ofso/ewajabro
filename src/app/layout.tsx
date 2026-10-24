@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
   title: {
-    default: `${siteConfig.brandName} — The Streets Are Calling | Mobile Drag Racing`,
+    default: `${siteConfig.brandName} | ${siteConfig.tagline} | Mobile Drag Racing`,
     template: `%s | ${siteConfig.brandName}`,
   },
   description: siteConfig.shortDescription,
@@ -37,16 +37,16 @@ export const metadata: Metadata = {
   generator: 'Next.js',
   keywords: [
     'Rivals Reborn',
-    'Racing Rivals',
     'mobile drag racing',
     'drag racing game',
     'iOS drag racing',
     'Android racing game',
     'car tuning',
     'dyno tuning',
-    'street racing',
+    'bracket racing',
     'quarter mile racing',
     'pink slip racing',
+    'manual shift racing',
   ],
   creator: siteConfig.brandName,
   publisher: siteConfig.legal.publisherLegalName,
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteConfig.baseUrl,
     siteName: siteConfig.brandName,
-    title: `${siteConfig.brandName} — High-Stakes Mobile Drag Racing`,
+    title: `${siteConfig.brandName} | High Stakes Mobile Drag Racing`,
     description: siteConfig.shortDescription,
     images: [
       {
@@ -86,10 +86,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.brandName} — Mobile Drag Racing`,
+    title: `${siteConfig.brandName} | Mobile Drag Racing`,
     description: siteConfig.shortDescription,
     images: [siteConfig.assets.logo],
-    creator: '@rivalsreborn',
+    creator: '@officialur26',
   },
   alternates: {
     canonical: siteConfig.baseUrl,

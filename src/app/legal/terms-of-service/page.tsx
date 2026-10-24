@@ -90,9 +90,9 @@ export default function TermsOfServicePage() {
           4. Virtual Items, In-App Purchases & Consumer Rights
         </h2>
         <p>
-          The game may offer virtual in-game currencies (such as credits or gold), blueprint upgrade parts, cosmetic
+          The game may offer virtual in game currencies (such as credits or gold), blueprint upgrade parts, cosmetic
           vehicle liveries, or premium vehicles (&ldquo;Virtual Items&rdquo;). Virtual Items are licensed to you on
-          a limited, revocable basis; they have no cash, monetary, or real-world value and do not constitute
+          a limited, revocable basis; they have no cash, monetary, or real world value and do not constitute
           personal property.
         </p>
         <p>
@@ -131,8 +131,8 @@ export default function TermsOfServicePage() {
             Reverse-engineering, decompiling, disassembling, or attempting to derive source code from the game client.
           </li>
           <li>
-            Participating in win-trading, match-rigging, or unauthorized real-money trading (&ldquo;RMT&rdquo;) of
-            in-game accounts or vehicles.
+            Participating in win-trading, match-rigging, or unauthorized real money trading (&ldquo;RMT&rdquo;) of
+            in game accounts or vehicles.
           </li>
           <li>
             Harassing, abusing, or defaming other players through crew chat, custom liveries, or player handles.

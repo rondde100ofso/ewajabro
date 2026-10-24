@@ -59,7 +59,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       return;
     }
 
-    // --- Racing Rivals Countdown Timeline (3 Yellows -> Green Launch) ---
+    // --- Drag Strip Countdown Timeline (3 Yellows -> Green Launch) ---
     const timers: NodeJS.Timeout[] = [];
 
     // Step 1: Yellow 1 drops (600ms)
@@ -115,7 +115,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
     return null;
   }
 
-  // Active bulb states (Only 3 Yellows and 1 Green - Racing Rivals Style)
+  // Active bulb states (3 Yellows and 1 Green - Pro Tree Style)
   const yellow1On = step === 'yellow_1' || step === 'yellow_2' || step === 'yellow_3';
   const yellow2On = step === 'yellow_2' || step === 'yellow_3';
   const yellow3On = step === 'yellow_3';
@@ -170,7 +170,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
         />
 
         {/* ======================================================== */}
-        {/* RACING RIVALS TREE (3 SINGLE YELLOWS • 1 SINGLE GREEN)    */}
+        {/* CHRISTMAS TREE (3 SINGLE YELLOWS • 1 SINGLE GREEN)       */}
         {/* ======================================================== */}
         <div className="flex flex-col items-center mb-6 sm:mb-8">
           {/* Top Post Cap */}

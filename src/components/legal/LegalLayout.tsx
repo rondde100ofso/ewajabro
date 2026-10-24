@@ -95,7 +95,7 @@ export function LegalLayout({
             <AlertTriangle className="w-4 h-4 text-[#FF4552] flex-shrink-0 mt-0.5" />
             <p>
               <strong className="text-[#F5F5F3]">Formal Review Notice:</strong> This document represents
-              the pre-launch operational policy draft for Rivals Reborn. All provisions are subject to final
+              the pre launch operational policy draft for Rivals Reborn. All provisions are subject to final
               statutory compliance audit prior to public iOS and Android storefront releases.
             </p>
           </div>

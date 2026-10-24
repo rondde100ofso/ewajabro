@@ -20,17 +20,22 @@ export function CookieConsentModal() {
   useEffect(() => {
     try {
       const saved = localStorage.getItem('rivals_cookie_consent');
-      if (!saved) {
+      if (!saved || saved.trim() === '') {
         // Show initial prompt
         const timer = setTimeout(() => setShowBanner(true), 1200);
         return () => clearTimeout(timer);
       } else {
         const parsed = JSON.parse(saved) as CookiePreferences;
-        setAnalytics(parsed.analytics);
-        setMarketing(parsed.marketing);
+        if (parsed && typeof parsed === 'object') {
+          setAnalytics(Boolean(parsed.analytics));
+          setMarketing(Boolean(parsed.marketing));
+        } else {
+          setShowBanner(true);
+        }
       }
     } catch {
-      // Ignore localStorage errors
+      // Storage or parse error, fallback to banner
+      setShowBanner(true);
     }
 
     // Listen for custom event to open preferences from footer
@@ -83,8 +88,8 @@ export function CookieConsentModal() {
                 Privacy & Data Preferences
               </h4>
               <p className="mt-1 text-xs text-[#A4A7AC] leading-relaxed">
-                We use strictly necessary cookies to ensure basic site functionality. Optional analytics
-                help us refine the Rivals Reborn experience and are only activated with your consent.
+                We use necessary cookies for core website functionality and session preferences.
+                Optional analytics help us monitor site stability and performance with your consent.
               </p>
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -192,7 +197,7 @@ export function CookieConsentModal() {
                     Marketing & Attribution
                   </span>
                   <p className="mt-1 text-xs text-[#A4A7AC]">
-                    Enables campaign conversion tracking for pre-registration and app store releases.
+                    Enables campaign conversion tracking for pre registration and app store releases.
                   </p>
                 </div>
                 <input

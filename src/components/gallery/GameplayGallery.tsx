@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Maximize2, Filter } from 'lucide-react';
+import { Maximize2, Camera } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Badge } from '@/components/ui/Badge';
 import { LightboxModal } from './LightboxModal';
@@ -11,12 +11,14 @@ export function GameplayGallery() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const categories = ['All', 'Drag Racing', 'Garage', 'Tuning', 'Multiplayer'];
+  const categories = ['All', 'Drag Racing', 'Garage'];
 
   const filteredItems =
     selectedCategory === 'All'
       ? siteConfig.gallery
       : siteConfig.gallery.filter((item) => item.category === selectedCategory);
+
+  const hasItems = siteConfig.gallery.length > 0;
 
   return (
     <section
@@ -35,84 +37,105 @@ export function GameplayGallery() {
               THE UNDERGROUND GALLERY
             </h2>
             <p className="mt-3 text-base text-[#A4A7AC] max-w-xl">
-              Inspect vehicle geometry, cockpit instrumentation, high-speed trap passes, and
-              the gritty midnight atmospheres of Rivals Reborn.
+              Official in game captures and media drops will be showcased here. Featuring the 3D garage, live drag race HUD, manual paddle shifters, and car builds.
             </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 text-xs font-mono tracking-widest uppercase transition-all duration-200 border ${
-                  selectedCategory === cat
-                    ? 'bg-[#E62935] text-white border-[#E62935] shadow-[0_0_15px_rgba(230,41,53,0.3)]'
-                    : 'bg-[#141619] text-[#A4A7AC] border-white/10 hover:border-white/30 hover:text-white'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          {/* Filter Pills - only shown when items exist */}
+          {hasItems && (
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3.5 py-1.5 text-xs font-mono tracking-widest uppercase transition-all duration-200 border ${
+                    selectedCategory === cat
+                      ? 'bg-[#E62935] text-white border-[#E62935] shadow-[0_0_15px_rgba(230,41,53,0.3)]'
+                      : 'bg-[#141619] text-[#A4A7AC] border-white/10 hover:border-white/30 hover:text-white'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Asymmetrical Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item, index) => {
-            const isPortrait = item.orientation === 'portrait';
-
-            return (
-              <div
-                key={item.id}
-                onClick={() => setLightboxIndex(index)}
-                className={`group relative bg-[#141619] border border-white/10 overflow-hidden cursor-pointer transition-all duration-300 hover:border-[#E62935] ${
-                  isPortrait ? 'md:row-span-2' : ''
-                }`}
+        {/* Gallery Content */}
+        {!hasItems ? (
+          <div className="relative border border-white/10 bg-[#141619] p-8 sm:p-14 text-center flex flex-col items-center justify-center max-w-3xl mx-auto shadow-2xl">
+            <div className="w-14 h-14 bg-[#1D2024] border border-white/10 flex items-center justify-center text-[#E62935] mb-6">
+              <Camera className="w-7 h-7 text-[#FF4552]" />
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-mono uppercase tracking-widest text-[#FF4552] bg-[#E62935]/10 border border-[#E62935]/30">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E62935] animate-ping" />
+              <span>LIVE GAMEPLAY MEDIA</span>
+            </div>
+            <h3 className="font-display font-black text-2xl sm:text-4xl uppercase tracking-tight text-[#F5F5F3] mb-3">
+              IN GAME SCREENSHOTS INCOMING
+            </h3>
+            <p className="text-sm sm:text-base text-[#A4A7AC] max-w-lg leading-relaxed mb-8">
+              Check back as we update the gallery with in game race captures, dyno tuning showcases, and garage builds. In the meantime, join our Discord for development previews and car reveals.
+            </p>
+            {siteConfig.socials.discord?.url && (
+              <a
+                href={siteConfig.socials.discord.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#E62935] hover:bg-[#FF4552] text-white font-display font-bold uppercase tracking-widest text-sm transition-all shadow-[0_0_20px_rgba(230,41,53,0.35)]"
               >
+                Join Discord for Previews
+              </a>
+            )}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {filteredItems.map((item, index) => {
+              return (
                 <div
-                  className={`relative w-full ${
-                    isPortrait ? 'h-[500px] md:h-full min-h-[440px]' : 'aspect-[16/10]'
-                  } overflow-hidden`}
+                  key={item.id}
+                  onClick={() => setLightboxIndex(index)}
+                  className="group relative bg-[#141619] border border-white/10 overflow-hidden cursor-pointer transition-all duration-300 hover:border-[#E62935] shadow-xl"
                 >
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    loading="lazy"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out filter brightness-[0.88] contrast-[1.05]"
-                  />
+                  <div className="relative w-full aspect-[16/9] overflow-hidden bg-black">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out filter brightness-[0.95] contrast-[1.05]"
+                    />
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-transparent opacity-80 group-hover:opacity-50 transition-opacity" />
 
-                  {/* Top Category Badge */}
-                  <div className="absolute top-3 left-3">
-                    <span className="text-[10px] font-mono tracking-widest uppercase bg-black/70 text-[#A4A7AC] px-2 py-0.5 border border-white/10 backdrop-blur-sm">
-                      {item.category}
-                    </span>
-                  </div>
+                    {/* Top Category Badge */}
+                    <div className="absolute top-3 left-3">
+                      <span className="text-[10px] font-mono tracking-widest uppercase bg-black/70 text-[#FF4552] px-2.5 py-1 border border-[#E62935]/40 backdrop-blur-sm">
+                        IN GAME // {item.category}
+                      </span>
+                    </div>
 
-                  {/* Zoom Icon Button */}
-                  <div className="absolute top-3 right-3 p-2 bg-black/60 border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity rounded">
-                    <Maximize2 className="w-4 h-4 text-[#FF4552]" />
-                  </div>
+                    {/* Zoom Icon Button */}
+                    <div className="absolute top-3 right-3 p-2 bg-black/60 border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity rounded">
+                      <Maximize2 className="w-4 h-4 text-[#FF4552]" />
+                    </div>
 
-                  {/* Bottom Title & Details */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
-                    <h3 className="font-display font-bold text-lg sm:text-xl uppercase tracking-wider text-[#F5F5F3]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 text-xs text-[#A4A7AC] line-clamp-1">{item.caption}</p>
+                    {/* Bottom Title & Details */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-1 group-hover:translate-y-0 transition-transform bg-gradient-to-t from-[#08090B] via-[#08090B]/80 to-transparent">
+                      <h3 className="font-display font-bold text-lg sm:text-xl uppercase tracking-wider text-[#F5F5F3]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 text-xs text-[#A4A7AC] line-clamp-2">{item.caption}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
 
         {/* Lightbox Modal */}
         {lightboxIndex !== null && (

@@ -29,8 +29,8 @@ export function PlatformDownloads() {
             BUILT FOR IOS & ANDROID
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#A4A7AC]">
-            Rivals Reborn is engineered from the ground up for modern mobile devices. High-fidelity
-            physics, ultra-low latency inputs, and console-grade automotive rendering.
+            Rivals Reborn is engineered from the ground up for mobile devices. Built with a dedicated
+            drag physics engine, zero latency input response, and authentic quarter mile timing gear.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export function PlatformDownloads() {
               </div>
               <div className="flex justify-between text-xs font-mono">
                 <span className="text-[#A4A7AC]">Testing Phase:</span>
-                <span className="text-[#FF4552]">Closed Invite-Only Alpha</span>
+                <span className="text-[#FF4552]">Closed Invite Only Alpha</span>
               </div>
             </div>
 
@@ -127,7 +127,7 @@ export function PlatformDownloads() {
               </div>
               <div className="flex justify-between text-xs font-mono">
                 <span className="text-[#A4A7AC]">Testing Phase:</span>
-                <span className="text-[#FF4552]">Closed Invite-Only Alpha</span>
+                <span className="text-[#FF4552]">Closed Invite Only Alpha</span>
               </div>
             </div>
 
@@ -163,16 +163,16 @@ export function PlatformDownloads() {
               <div className="inline-flex items-center gap-2 mb-1">
                 <span className="w-2 h-2 rounded-full bg-[#E62935] animate-ping" />
                 <span className="text-xs font-mono uppercase tracking-widest text-[#FF4552]">
-                  Under Development &bull; Invite-Only Alpha
+                  Under Development &bull; Invite Only Alpha
                 </span>
               </div>
               <h4 className="font-display font-bold text-lg sm:text-xl uppercase tracking-wide text-[#F5F5F3]">
-                Pre-Registration & Closed Beta Testing Invitations Opening Soon
+                Pre Registration & Closed Beta Testing Invitations Opening Soon
               </h4>
               <p className="mt-1 text-sm text-[#A4A7AC]">
-                Rivals Reborn is currently in a restricted, invite-only closed alpha testing phase. Pre-registration
+                Rivals Reborn is currently in a restricted, invite only closed alpha testing phase. Pre registration
                 and wider Closed Beta testing invitations will open soon. Join our verified Discord community to request
-                alpha testing access and secure day-one beta priority.
+                alpha testing access and secure day one beta priority.
               </p>
             </div>
           </div>

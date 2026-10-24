@@ -1,6 +1,6 @@
 # Rivals Reborn — Official Game Website
 
-The official, production-ready website for **Rivals Reborn**, a competitive mobile drag-racing game inspired by the underground street-racing culture and the legacy of *Racing Rivals*, targeting iOS and Android.
+The official, production-ready website for **Rivals Reborn**, a competitive mobile drag-racing game built from the ground up with custom physics, deep dyno tuning, and live high-stakes multiplayer, targeting iOS and Android.
 
 ---
 

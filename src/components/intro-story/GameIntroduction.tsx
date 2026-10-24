@@ -29,9 +29,9 @@ export function GameIntroduction() {
 
           <div className="lg:col-span-4 pb-2">
             <p className="text-base sm:text-lg text-[#A4A7AC] leading-relaxed">
-              Mobile drag racing was never about tapping a nitrous button when an icon flashes green.
-              It was about the smell of burnt rubber in the staging box, the mechanical dread of
-              false-starting by three milliseconds, and the rush of putting your best ride on the line.
+              Real drag racing isn&apos;t about arcade assists or tapping a button when an icon flashes green.
+              It&apos;s about knowing your car&apos;s exact power band, holding RPMs on the launch limiter,
+              dropping at the perfect microsecond, and pulling manual paddle shifts right before the limiter.
             </p>
           </div>
         </div>
@@ -40,8 +40,8 @@ export function GameIntroduction() {
         <div className="relative border border-white/10 bg-[#141619] p-3 sm:p-5 mb-16 sm:mb-24">
           <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden">
             <Image
-              src="/images/gallery-1.jpg"
-              alt="Midnight drag racing staging line under sodium floodlights"
+              src={siteConfig.assets.heroPoster}
+              alt="Drag racing staging line under floodlights"
               fill
               sizes="(max-width: 1280px) 100vw, 1200px"
               className="object-cover object-center filter brightness-[0.85] contrast-[1.1]"
@@ -50,10 +50,10 @@ export function GameIntroduction() {
 
             {/* Corner telemetry overlays */}
             <div className="absolute top-4 left-4 sm:top-6 sm:left-6 font-mono text-[10px] sm:text-xs text-white/80 tracking-widest uppercase bg-black/60 px-3 py-1.5 border border-white/10 backdrop-blur-sm">
-              SECTOR 01 // STAGING BOX 02:44 AM
+              REACTION TIME 0.009S // ELAPSED 2.048S
             </div>
             <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 font-mono text-[10px] sm:text-xs text-[#FF4552] tracking-widest uppercase bg-black/70 px-3 py-1.5 border border-[#E62935]/40 backdrop-blur-sm">
-              TRAP SPEED 214.6 MPH
+              TRAP SPEED 180 MPH // N2O BOOST
             </div>
           </div>
         </div>
@@ -64,15 +64,15 @@ export function GameIntroduction() {
           <div className="border-l-2 border-[#E62935] pl-6 sm:pl-8 space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs text-[#FF4552] tracking-widest uppercase">
               <Gauge className="w-4 h-4" />
-              <span>01 // MECHANICAL REACTION</span>
+              <span>01 // REACTION & PADDLE SHIFTING</span>
             </div>
             <h3 className="font-display font-bold text-2xl uppercase tracking-wider text-[#F5F5F3]">
-              UNASSISTED MANUAL LAUNCH
+              MANUAL PADDLE SHIFTS & N2O
             </h3>
             <p className="text-sm text-[#A4A7AC] leading-relaxed">
-              Every millisecond counts. Feather your throttle in the burnout box to bring tire compound
-              up to optimum temperature, preload the drivetrain against the transmission brake, and launch
-              the instant the amber lights transition.
+              Every millisecond counts. Drop your launch on the green light, pull manual paddle shifts right on
+              the shift light window, and time your nitrous boost down the strip. Miss your shift window and you
+              get hit with a late shift that costs you the race.
             </p>
           </div>
 
@@ -80,15 +80,15 @@ export function GameIntroduction() {
           <div className="border-l-2 border-white/20 pl-6 sm:pl-8 space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs text-[#A4A7AC] tracking-widest uppercase">
               <Flame className="w-4 h-4" />
-              <span>02 // HIGH-STAKES PINK SLIPS</span>
+              <span>02 // HIGH STAKES PINK SLIPS</span>
             </div>
             <h3 className="font-display font-bold text-2xl uppercase tracking-wider text-[#F5F5F3]">
-              REAL RISK. REAL REPUTATION.
+              CASH, CARS & REPUTATION
             </h3>
             <p className="text-sm text-[#A4A7AC] leading-relaxed">
-              Tired of racing ghosts without consequences? Enter high-stakes bracket races where pink
-              slips can change owners in under eight seconds. Genuine tension that makes your hands
-              sweat before staging.
+              Tired of racing ghosts without consequences? Line up in real time against live opponents where
+              actual pink slips and cash wagers are on the line. When you put your car on the line, you either
+              back up your tune or hand over your keys.
             </p>
           </div>
 
@@ -96,15 +96,14 @@ export function GameIntroduction() {
           <div className="border-l-2 border-white/20 pl-6 sm:pl-8 space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs text-[#A4A7AC] tracking-widest uppercase">
               <Trophy className="w-4 h-4" />
-              <span>03 // UNDERGROUND CREWS</span>
+              <span>03 // 3D GARAGE & CREW WARS</span>
             </div>
             <h3 className="font-display font-bold text-2xl uppercase tracking-wider text-[#F5F5F3]">
-              TERRITORY & LEADERBOARDS
+              DYNO SPECS & CREW TOURNAMENTS
             </h3>
             <p className="text-sm text-[#A4A7AC] leading-relaxed">
-              Band together with up to 20 drivers in dedicated racing syndicates. Battle across weekly
-              turf wars, pool blueprint research, and claim exclusive championship vehicles reserved
-              for top-tier teams.
+              Manage your fleet with real dyno metrics: power, weight, grip, and shift speed. Perform maintenance,
+              unlock crate R&amp;D upgrades, customize aero and widebody kits, and dominate weekly crew turf events.
             </p>
           </div>
         </div>

@@ -43,7 +43,7 @@ export function FinalCTA() {
         </h2>
 
         <p className="mt-6 text-lg sm:text-xl text-[#A4A7AC] max-w-xl font-normal leading-relaxed">
-          The garage is yours to build. The streets are yours to conquer.
+          Build your machine. Perfect your tune. Line up at the tree.
         </p>
 
         <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
@@ -70,7 +70,7 @@ export function FinalCTA() {
         </div>
 
         <p className="mt-6 text-xs font-mono text-[#A4A7AC]/60 uppercase tracking-widest">
-          Mobile Drag Racing • Coming to iOS & Android
+          Competitive Mobile Drag Racing • Coming to iOS & Android
         </p>
       </div>
     </section>

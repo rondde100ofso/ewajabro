@@ -157,14 +157,14 @@ export const siteConfig: SiteConfig = {
       id: 'tuning',
       tag: 'PRECISION CALIBRATION',
       title: 'AUTO TUNING & TUNE BOOK',
-      subtitle: 'Dial in the winning setup automatically, or calibrate and save custom profiles to your Tune Book.',
+      subtitle: 'Save custom profiles to your Tune Book and apply tunes or upgrade parts faster with Auto Tune.',
       description:
-        'Take the guesswork out of calibration with Auto Tune, or dial in your build manually across engine, turbo, and nitrous pro tiers. Save your winning configurations directly into your Tune Book with custom profile names, allowing you to instantly load tailored setups for your race with zero downtime.',
+        'Calibrate your build across engine, turbo, and nitrous pro tiers, then save your winning setups directly into your Tune Book with custom profile names. Auto Tune allows you to apply saved tunes and upgrade your parts easier and more time efficient, getting your vehicle dialed in for the quarter mile with zero downtime.',
       imageSrc: '/images/feature-tuning.png',
       imageAlt: 'Rivals Reborn Tune Bench showing auto tuning, pro parts calibration, and saved tune book',
       aspectRatio: '1024 / 470',
       stats: [
-        { label: 'Auto Tune', value: 'Instant Dyno Calibration' },
+        { label: 'Auto Tune', value: 'Fast & Efficient Upgrades' },
         { label: 'Tune Book', value: 'Save & Load Profiles' },
       ],
     },
@@ -212,7 +212,7 @@ export const siteConfig: SiteConfig = {
       imageSrc: '/images/feature-racing.png',
       imageAlt: 'Manual paddle shifting, launch gauge, and RPM tachometer HUD in Rivals Reborn',
       stats: [
-        { label: 'Distance', value: '1/4 & 1/8 Mile' },
+        { label: 'Distance', value: '1/4 Mile' },
         { label: 'Timing', value: 'Millisecond Precision' },
       ],
     },
@@ -250,7 +250,7 @@ export const siteConfig: SiteConfig = {
       orientation: 'landscape',
       src: '/images/feature-tuning.png',
       alt: 'F1 GTR Tune Bench showing engine calibration and Tune Book',
-      caption: 'In-depth Tune Bench showing engine component Pro tiers, multi-profile Tune Book, and one-tap Auto Tune calibration.',
+      caption: 'In-depth Tune Bench showing engine component Pro tiers, multi-profile Tune Book, and fast Auto Tune part upgrades.',
       isRealGameplay: true,
     },
     {

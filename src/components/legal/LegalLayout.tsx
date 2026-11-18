@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Printer, Mail, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Printer, Mail, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Footer } from '@/components/footer/Footer';
 import { TableOfContents } from './TableOfContents';
@@ -69,7 +69,7 @@ export function LegalLayout({
         {/* Document Header */}
         <div className="pb-8 border-b border-white/10 mb-10">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E62935] mb-3">
-            LEGAL DRAFT DOCUMENTATION
+            OFFICIAL LEGAL DOCUMENTATION
           </p>
           <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight text-[#F5F5F3]">
             {title}
@@ -87,16 +87,6 @@ export function LegalLayout({
             <div>
               <span className="text-[#6B7078]">Entity:</span> {siteConfig.legal.publisherLegalName}
             </div>
-          </div>
-
-          {/* Legal Notice Box */}
-          <div className="mt-6 p-4 bg-[#141619] border-l-2 border-[#E62935] text-xs text-[#A4A7AC] flex items-start gap-3 no-print">
-            <AlertTriangle className="w-4 h-4 text-[#FF4552] flex-shrink-0 mt-0.5" />
-            <p>
-              <strong className="text-[#F5F5F3]">Formal Review Notice:</strong> This document represents
-              the pre launch operational policy draft for Rivals Reborn. All provisions are subject to final
-              statutory compliance audit prior to public iOS and Android storefront releases.
-            </p>
           </div>
         </div>
 
